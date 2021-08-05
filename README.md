@@ -1,19 +1,19 @@
 # AWS-IoT-Core-com-Arduino-ESP8622
-Utilizando o AWS IoT Core com Arduino - Obter através de sensor a temperatura e umidade e armazenar na Cloud
+Utilizando o AWS IoT Core / Lambda / DynamoDB com Arduino - Obter através de sensor a temperatura e umidade e armazenar na Cloud
 
 # Objetivo: 
 
-Através do "Arduino" (ESP8266), permitir a captura da Temperatura e Umidade e enviar para o AWS Iot Core, para posteriormente ser armazenado em Bando de Dados - NOSQL (DynamoDB), através de uma função Lambda
+Através do sensor instalado no "Arduino" (ESP8266), permitir a captura da Temperatura e Umidade e enviar para o AWS Iot Core, para posteriormente ser armazenado em Bando de Dados - NOSQL (DynamoDB), através de uma função Lambda (Pyhton). A linguagem de programação do Arduino utilizada neste contexto é a Linguagem "C"
+Os códigos fonte estão disponíveis aqui neste tópico
 
 # Pré-Requisitos  
    . Ter uma conta ativa na AWS  
    . Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado  
-   ![image](https://user-images.githubusercontent.com/63315625/128397981-b3582876-53a9-4d55-a77e-75ce74433258.png)
+      
+   ![image](https://user-images.githubusercontent.com/63315625/128399371-aa27e3dc-4ffa-4445-a25d-493eaeedd43d.png)
 
 
-                
 # Biblioteca Necessárias
-
 
 | Biblioteca  |  Link  | Complemento |
 | ------------------- | ------------------- | ------------------- |
@@ -23,7 +23,6 @@ Através do "Arduino" (ESP8266), permitir a captura da Temperatura e Umidade e e
 |  DH Sensor | https://drive.google.com/file/d/16brDLNmOVzmQs6sFh-_CAMivQu-cn6kg/view | Baixar somente se for utilizar o sensor de temperatura/umidade |
 |  Adafruit Sensor | https://drive.google.com/file/d/19ypgAVNwn5f-kb4KDxFr0eOvMQz_yxSU/view | Baixar somente se for utilizar o sensor de temperatura/umidade |
  
-
 # Passo-a-passo
 
 Abaixo você verá um **passo-a-passo** de como realizar a integração do "Arduino" com o "IoT Core" da AWS
@@ -53,3 +52,20 @@ Selecione o modelo da placa conforme imagem abaixo
 Instalar as 
 
 
+## Criação do IoT (Things) na AWS
+Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.amazon.com/pt/console/ 
+
+      
+### Passo 01
+Faça o Download do IDE no link: https://www.arduino.cc/en/software e efetue a instalação do mesmo
+### Passo 02
+Configurar o Arduino para poder programar a NODEMCU ESP8266.
+
+### Passo 03
+navegue até o Gerenciador de Placas através do caminho Ferramentas/ Placa/ Gerenciador de placas. No campo para pesquisa procure por ESP8266 e realize a instalação do pacote, 
+
+### Passo 04
+Selecione o modelo da placa conforme imagem abaixo  
+
+### Passo 05
+Instalar as 
