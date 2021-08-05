@@ -1,15 +1,13 @@
 # AWS IoT Core com Arduino ESP8622
-Utilizando o AWS IoT Core / Lambda / DynamoDB com Arduino - Obter através de sensor a temperatura e umidade e armazenar na Cloud
 
-# Objetivo: 
+## Objetivo: 
 
-Através do sensor instalado no "Arduino" (ESP8266), permitir a captura da Temperatura e Umidade e enviar para o AWS Iot Core, para posteriormente ser armazenado em Bando de Dados - NOSQL (DynamoDB), através de uma função Lambda (Pyhton). A linguagem de programação do Arduino utilizada neste contexto é a Linguagem "C"
+Através do sensor instalado no **"Arduino" (ESP8266)**, permitir a captura da Temperatura e Umidade e enviar para o **AWS Iot Core**, para posteriormente ser armazenado em **Banco de Dados - NOSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**
 Os códigos fonte estão disponíveis aqui neste tópico
 
-## Desenho de Solução:
+## Desenho de Solução:  
 
-
-
+![image](https://user-images.githubusercontent.com/63315625/128429650-28329a7c-f80d-4298-94c8-0688077c0158.png)
 
 # Pré-Requisitos  
    . Ter uma conta ativa na AWS  
@@ -33,7 +31,7 @@ Os códigos fonte estão disponíveis aqui neste tópico
 Abaixo você verá um **passo-a-passo** de como realizar a integração do "Arduino" com o "IoT Core" da AWS
 
 ## Instalação do Arduino
-Caso não tenha o IDE do Arduino instalado, seguir os passos abaixo: 
+Caso não tenha o IDE do Arduino instalado, deverá seguir os passos abaixo: 
       
 ### Passo 01
 Faça o Download do IDE no link: https://www.arduino.cc/en/software e efetue a instalação do mesmo
