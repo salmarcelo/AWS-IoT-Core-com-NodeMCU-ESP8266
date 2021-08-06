@@ -214,6 +214,69 @@ Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependen
 
 ![image](https://user-images.githubusercontent.com/63315625/128545036-ab1c4bea-971b-4b56-b858-411024f021ff.png)
 
+### Policies e Roles
+Antes de criar a Função Lambda, vamos criar as permissões, dado que a Função irá acionar um serviço do DynamoDB   
+
+#### Criar Policie
+No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **Create Policy**
+
+![image](https://user-images.githubusercontent.com/63315625/128567146-0228f4d5-d509-401b-b1a4-5955a5fd3fc3.png)
+
+
+**Opção 01 - Clicar em JSON e colar a Policy abaixo**  
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "dynamodb:*",
+            "Resource": "*"
+        }
+    ]
+}
+```  
+
+**Opção 02 - Seguir os passos abaixo:**  
+. Clicar em **Choose a service** e informar DynamoDB para o filtro e selecione a opção **DynamoDB**  
+. Selecionar a opção "All DynamoDB actions (dynamodb:*)"    
+. Clicar no item *Resources* e selecione a opção "All Resources"    
+. Clicar no botão **Next: Tags**    
+. Clicar no botão **Next: Review**    
+
+Continua.....
+. Informar um nome para a policy (myPolicyDynamoDB)   
+. Clicar no botão **Create policy**    
+
+![image](https://user-images.githubusercontent.com/63315625/128567746-6f5ceb88-4950-4295-b40f-9571bb165bd0.png)
+
+**Nota:** O procedimento acima dá acesso total ao DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários :)  
+
+### Criar Role
+No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
+
+![image](https://user-images.githubusercontent.com/63315625/128569612-1a5cb6e6-c15b-4157-a26d-57bee8a58a0f.png)
+
+. Clicar em **Lambda** e em **Next: Permissions**  
+. No campo **Filter policies**, digite o nome da policy criada no passo anterior (myPolicyDinamoDB)  
+
+![image](https://user-images.githubusercontent.com/63315625/128569964-f97ac623-44f2-4b41-882a-440471ed15fd.png)   
+
+ . Clicar em **Next: tags**   
+ . Clicar em **Next: Review**   
+ . Informar um nome para a role (myRoleLambda-Dynamo)   
+ . Clicar no botão **Create role**    
+ 
+ ![image](https://user-images.githubusercontent.com/63315625/128570306-3d76b98a-db6e-49a8-ba62-2792adf61ade.png)
+
+
+
+
+
+
+
+
 ### Função Lambda
 Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
@@ -228,4 +291,16 @@ A função será gerada e apresentada na Console
 
 ![image](https://user-images.githubusercontent.com/63315625/128548003-f00c452f-21b4-4b17-bd11-ca4d7d3ea903.png)
    
-  
+Copiar o conteúdo do arquivo **RegistroTemperatura.py** e substituir a função padrão criada automáticamente.
+Atentar para **substituir o nome da tabela** com o nome da tabela que **foi criada**
+Clicar em **Deploy**
+
+![image](https://user-images.githubusercontent.com/63315625/128553260-08486d71-73e7-4922-8922-c24aa47f5b89.png)
+
+Para realizar um teste, acesse a aba Test, preencha as informações do JSON de entrada e clique em **Test**
+
+![image](https://user-images.githubusercontent.com/63315625/128554109-9d321568-ff74-4f15-91d4-4093b349961d.png)
+
+
+
+
