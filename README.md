@@ -84,7 +84,21 @@ Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.ama
 
       
 ### Passo 01
-Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"
+Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"  
+Se o usuário utilizado na console não possuir privilégio total, precisa criar uma policy no Identity and Access Management (IAM) da Console.
+
+**Policy**  
+{  
+    "Version": "2012-10-17",  
+    "Statement": [  
+        {  
+            "Sid": "VisualEditor0",  
+            "Effect": "Allow",  
+            "Action": "iot:*",  
+            "Resource": "*"  
+        }  
+    ]  
+}  
 
 ### Passo 02
 Na barra superior pesquisar o serviço IoT Core, conforme imagem abaixo: (Selecionar opção IoT Core)  
@@ -118,9 +132,19 @@ Clicar em **Next**
 
 Clicar em **Create thing**  
 
-Será aberta uma janela para que baixe os certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO**  momento de realizar o download dos certificados ** 
+Será aberta uma janela para que realize o download dos certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO**  momento de realizar esta etapa ** 
 
 ![image](https://user-images.githubusercontent.com/63315625/128447630-56f068d8-e2b6-44ec-86c1-4b375ea00daa.png)
 
 ### Passo 05
-Instalar as 
+Criar a shadow do IoT Core, conforme imagens abaixo:  
+
+![image](https://user-images.githubusercontent.com/63315625/128501613-cb292961-4964-4849-b636-ecbae4c56d37.png)
+
+![image](https://user-images.githubusercontent.com/63315625/128501861-041aaad2-b039-4fc3-942b-fb67dc770b30.png)  
+
+![image](https://user-images.githubusercontent.com/63315625/128502443-2538f7d5-3c83-4aa4-ac6e-540172151098.png)  
+
+
+
+
