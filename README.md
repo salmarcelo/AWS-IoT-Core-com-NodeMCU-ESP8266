@@ -4,6 +4,7 @@
 
 Através do sensor instalado no **"Arduino" (ESP8266)**, permitir a captura da Temperatura e Umidade e enviar para o **AWS Iot Core**, para posteriormente ser armazenado em **Banco de Dados - NOSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**
 Os códigos fonte do Arduino e da Função Lambda estão disponíveis aqui neste tópico.
+A Parte de armazenamento das informações em banco de dados, será opcional, portanto será o último tópico deste conteúdo, dado que não tem impacto no Programa do Arduino.
 
 ## Desenho de Solução:  
 
@@ -154,9 +155,9 @@ Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisa
 A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.
 Lembrando que a segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas no tópico **Armazenar Dados** que estará mais adiante
 
-# Alterar Código Fonte
+## Alterar Código Fonte
 
-## **IoTCore-AWS-ESP3622.ino**  
+### **IoTCore-AWS-ESP3622.ino**  
 Alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
 ```
  //Informa os shadows de Publish e Subscribe
@@ -184,7 +185,7 @@ if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou tempe
    }
 ```
 
-## **secret.h**   
+### **secret.h**   
 Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação do Arduino, conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128541576-6e5ac9a1-2e79-4dfd-93a2-76e63aa70f41.png)
@@ -193,8 +194,34 @@ Alterar as informações conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
 
-## Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
+### Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
 
 ![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
+
+
+## Armazenamento das informações no Amazon DynamoDB 
+
+### Criação da Tabela DynamoDB
+Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
+
+![image](https://user-images.githubusercontent.com/63315625/128543833-2abbb9d9-7ef3-4aa2-a42f-e5050c8fc9c9.png)
+
+Selecionar opção **Tables** e clicar no botão **Create Table**  
+Neste tópico serei simplista e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato AAAAMMDDHHMMSS.
+Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da mesma, pois com certeza influenciarão em questão de performance, custos de leitura, etc. #Fica a Dica!!! 
+
+![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
+
+![image](https://user-images.githubusercontent.com/63315625/128545036-ab1c4bea-971b-4b56-b858-411024f021ff.png)
+
+### Função Lambda
+Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
+
+![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)
+
+Selecionar opção **Function** e clicar em **Create function**
+
+
+
 
 
