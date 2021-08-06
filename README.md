@@ -66,13 +66,13 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
 ### Passo 06  
-Baixar os arquivos **IotAWSESP8266.h** e **secret.h** disponibilizados na parte superior desta página.
+Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.
 No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".
-Basta abrir o arquivo **IotAWSESP8266.h** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
+Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
 No menu, selecione a opção **"Sketch / Adicionar Arquivo"** e selecione o arquivo **secret.h** baixado anteriormente
 
 Observações:  
-  O arquivo **IoTAWSESP8266.h**, contem os códigos necessários para realizar a integração com o IoT Core AWS. Nele contem diversas funções, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Envio de mensagens, Recebimento de Mensagens e por aí vai.  
+  O arquivo **IoTCore-AWS-ESP3622.ino**, contem os códigos necessários para realizar a integração com o IoT Core AWS. Nele contem diversas funções, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Envio de mensagens, Recebimento de Mensagens e por aí vai.  
   O arquivo **secrets.h**, contem os certificados necessários para realização de uma conexão segura com o AWS IoT Core.  
   
   Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e sem as mesmas seu programa não funcionará.    
@@ -82,6 +82,8 @@ Observações:
   A função **loop()** é a função principal do programa e é executada continuamente enquanto a placa microcontroladora estiver ligada. É nesta função que todos os comandos e operações deverão ser escritos.    
 
 Agora vamos aos passos de criação do IoT na AWS. Posteriormente voltaremos à IDE do Arduino para cmomplementar as informações do programa.  
+
+## Agora a "coisa" começou a ficar séria :) 
 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.amazon.com/pt/console/ 
@@ -138,6 +140,56 @@ Criar a shadow do IoT Core, conforme imagens abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128502443-2538f7d5-3c83-4aa4-ac6e-540172151098.png)  
 
+### Passo 06
+Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre Arduino e AWS
+Basta selecionar opção **Interact**, e clicar no botão **View Settings**, conforme imagens abaixo:  
 
+![image](https://user-images.githubusercontent.com/63315625/128537785-e5b462c3-7a48-46a7-8d47-0f3dbf7e3bc1.png)
 
+Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisaremos dele nos próximos passos.  
+
+![image](https://user-images.githubusercontent.com/63315625/128538113-209f347a-40ae-4552-bc43-22e4c27fde5a.png)
+
+### Passo 07
+A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.
+Lembrando que a segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas no tópico **Armazenar Dados** que estará mais adiante
+
+# Alterar Código Fonte
+
+## **IoTCore-AWS-ESP3622.ino**  
+Alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
+```
+ //Informa os shadows de Publish e Subscribe
+ const int MQTT_PORT = 8883;
+ const char MQTT_SUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/update/get";
+ const char MQTT_PUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/update";
+```
+
+Se **NÃO FOR UTILIZAR** o sensor de Temperatura e enviar dados hardcoded, é necessário comentar todos os códigos abaixo:
+```
+#include <DHT.h> //Inclui a biblioteca DHT Sensor Library
+#define DHTPIN 5 //Pino digital 5 (pino D1) conectado ao DHT11
+#define DHTTYPE DHT11 //DHT 11
+
+//Inicializando o objeto dht do tipo DHT passando como parâmetro o pino (DHTPIN) e o tipo do sensor (DHTTYPE)
+DHT dht(DHTPIN, DHTTYPE); 
+
+//captura informações do sensor
+vlUmidade = dht.readHumidity(); //lê o valor da umidade e armazena na variável h do tipo float (aceita números com casas decimais)
+vlTemperatura = dht.readTemperature(); //lê o valor da temperatura e armazena na variável t do tipo float (aceita números com casas decimais)
+
+if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou temperatura são ou não um número
+   Serial.println("Erro ao obter temperatura");
+   return; //Caso não seja um número retorna
+   }
+```
+
+## **secret.h**   
+Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação do Arduino, conforme abaixo:
+
+![image](https://user-images.githubusercontent.com/63315625/128541576-6e5ac9a1-2e79-4dfd-93a2-76e63aa70f41.png)
+
+Alterar as informações conforme abaixo:   
+
+![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
 
