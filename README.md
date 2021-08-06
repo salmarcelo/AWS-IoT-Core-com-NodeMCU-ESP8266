@@ -217,11 +217,15 @@ Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependen
 ### Função Lambda
 Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
-![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)
-
-Selecionar opção **Function** e clicar em **Create function**
+![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)  
 
 
+Selecionar opção **Function** e clicar em **Create function** e preencher as informações conforme imagem abaixo:
 
+![image](https://user-images.githubusercontent.com/63315625/128547568-dc249f55-366c-4dad-947a-eea718f07df3.png)
 
+A função será gerada e apresentada na Console   
 
+![image](https://user-images.githubusercontent.com/63315625/128548003-f00c452f-21b4-4b17-bd11-ca4d7d3ea903.png)
+   
+  
