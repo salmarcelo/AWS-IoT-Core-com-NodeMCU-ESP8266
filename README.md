@@ -223,7 +223,8 @@ No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **C
 ![image](https://user-images.githubusercontent.com/63315625/128567146-0228f4d5-d509-401b-b1a4-5955a5fd3fc3.png)
 
 
-**Opção 01 - Clicar em JSON e colar a Policy abaixo**  
+**Opção 01 - Clicar em JSON e colar a Policy abaixo**   
+
 ```
 {
     "Version": "2012-10-17",
@@ -239,6 +240,7 @@ No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **C
 ```  
 
 **Opção 02 - Seguir os passos abaixo:**  
+
 . Clicar em **Choose a service** e informar DynamoDB para o filtro e selecione a opção **DynamoDB**  
 . Selecionar a opção "All DynamoDB actions (dynamodb:*)"    
 . Clicar no item *Resources* e selecione a opção "All Resources"    
@@ -256,26 +258,19 @@ Continua.....
 ### Criar Role
 No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
 
-![image](https://user-images.githubusercontent.com/63315625/128569612-1a5cb6e6-c15b-4157-a26d-57bee8a58a0f.png)
+ ![image](https://user-images.githubusercontent.com/63315625/128569612-1a5cb6e6-c15b-4157-a26d-57bee8a58a0f.png)
 
 . Clicar em **Lambda** e em **Next: Permissions**  
 . No campo **Filter policies**, digite o nome da policy criada no passo anterior (myPolicyDinamoDB)  
 
-![image](https://user-images.githubusercontent.com/63315625/128569964-f97ac623-44f2-4b41-882a-440471ed15fd.png)   
+ ![image](https://user-images.githubusercontent.com/63315625/128569964-f97ac623-44f2-4b41-882a-440471ed15fd.png)   
 
  . Clicar em **Next: tags**   
  . Clicar em **Next: Review**   
- . Informar um nome para a role (myRoleLambda-Dynamo)   
+ . Informar um nome para a role (myRoleLambda-Dynamo)      
  . Clicar no botão **Create role**    
  
  ![image](https://user-images.githubusercontent.com/63315625/128570306-3d76b98a-db6e-49a8-ba62-2792adf61ade.png)
-
-
-
-
-
-
-
 
 ### Função Lambda
 Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
@@ -285,7 +280,8 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
 Selecionar opção **Function** e clicar em **Create function** e preencher as informações conforme imagem abaixo:
 
-![image](https://user-images.githubusercontent.com/63315625/128547568-dc249f55-366c-4dad-947a-eea718f07df3.png)
+![image](https://user-images.githubusercontent.com/63315625/128571298-34939237-991c-4b33-b6ad-dc67ff03ae3d.png)
+
 
 A função será gerada e apresentada na Console   
 
@@ -300,6 +296,16 @@ Clicar em **Deploy**
 Para realizar um teste, acesse a aba Test, preencha as informações do JSON de entrada e clique em **Test**
 
 ![image](https://user-images.githubusercontent.com/63315625/128554109-9d321568-ff74-4f15-91d4-4093b349961d.png)
+
+Verificar resultado   
+
+![image](https://user-images.githubusercontent.com/63315625/128571768-77c83a3d-d226-4aa8-a961-3c50df3a0cdf.png)
+
+Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
+
+### "Triggar" o Iot Core com a Função Lambda   
+Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB
+
 
 
 
