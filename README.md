@@ -88,10 +88,10 @@ Agora vamos aos passos de criação do IoT na AWS. Posteriormente voltaremos à 
 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.amazon.com/pt/console/ 
-
       
 ### Passo 01
-Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"  
+Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"   
+Para este processo eu utilizei a Região **US West (N. California)us-west-1**. Caso utilize alguma outra região, podem existir diferenças entre as Consoles, mas de qualquer forma, conseguirá  realizar as etapas sem dificuldades :)
 
 ### Passo 02
 Na barra superior pesquisar o serviço IoT Core, conforme imagem abaixo: (Selecionar opção IoT Core)  
@@ -306,6 +306,8 @@ Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluíd
 Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme o Desenho de Solução
 
 
-
+Marcelo Nardi (Sal)
+Arquiteto de Soluções
+[LinkedIin](https://www.linkedin.com/in/marcelo-fabiano-villarinho-nardi-sal-989a168b/)
 
 
