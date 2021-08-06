@@ -121,6 +121,7 @@ Clicar em **Next**
 ![image](https://user-images.githubusercontent.com/63315625/128446986-07d573fb-c989-4f59-88bd-69d4ade879f5.png)
 
 Clicar em **Create thing**  
+Perceba que não estamos criando uma Policy, mas em ambiente Produtivo a sugestão é criar um usuário específico para IoT e criar a Policy contendo somente as permissões necessárias.
 
 ![image](https://user-images.githubusercontent.com/63315625/128526078-63e3e216-acdb-4f91-90c6-01c27873c166.png)
 
