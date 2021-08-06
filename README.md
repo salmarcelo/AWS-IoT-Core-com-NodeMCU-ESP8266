@@ -193,3 +193,8 @@ Alterar as informações conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
 
+## Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
+
+![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
+
+
