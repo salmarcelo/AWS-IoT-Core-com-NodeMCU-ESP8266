@@ -247,13 +247,13 @@ No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **C
 . Clicar no botão **Next: Tags**    
 . Clicar no botão **Next: Review**    
 
-Continua.....
+Continua.....   
 . Informar um nome para a policy (myPolicyDynamoDB)   
 . Clicar no botão **Create policy**    
 
 ![image](https://user-images.githubusercontent.com/63315625/128567746-6f5ceb88-4950-4295-b40f-9571bb165bd0.png)
 
-**Nota:** O procedimento acima dá acesso total ao DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários :)  
+**Nota:** O procedimento acima dá acesso total ao DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela" :)  
 
 ### Criar Role
 No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
@@ -282,7 +282,6 @@ Selecionar opção **Function** e clicar em **Create function** e preencher as i
 
 ![image](https://user-images.githubusercontent.com/63315625/128571298-34939237-991c-4b33-b6ad-dc67ff03ae3d.png)
 
-
 A função será gerada e apresentada na Console   
 
 ![image](https://user-images.githubusercontent.com/63315625/128548003-f00c452f-21b4-4b17-bd11-ca4d7d3ea903.png)
@@ -297,14 +296,14 @@ Para realizar um teste, acesse a aba Test, preencha as informações do JSON de 
 
 ![image](https://user-images.githubusercontent.com/63315625/128554109-9d321568-ff74-4f15-91d4-4093b349961d.png)
 
-Verificar resultado   
+**Verificar resultado**   
 
 ![image](https://user-images.githubusercontent.com/63315625/128571768-77c83a3d-d226-4aa8-a961-3c50df3a0cdf.png)
 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
 ### "Triggar" o Iot Core com a Função Lambda   
-Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB
+Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme o Desenho de Solução
 
 
 
