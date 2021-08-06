@@ -302,12 +302,12 @@ Para realizar um teste, acesse a aba Test, preencha as informações do JSON de 
 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
-### "Triggar" o Iot Core com a Função Lambda   
+### Triggar o Iot Core com a Função Lambda   
 Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme o Desenho de Solução
 
 
-Marcelo Nardi (Sal)
-Arquiteto de Soluções
+Marcelo Nardi (Sal)   
+Arquiteto de Soluções   
 [LinkedIin](https://www.linkedin.com/in/marcelo-fabiano-villarinho-nardi-sal-989a168b/)
 
 
