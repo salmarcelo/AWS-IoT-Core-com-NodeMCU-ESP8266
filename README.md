@@ -18,7 +18,7 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
 
 
-# Biblioteca Necessárias
+# Bibliotecas Necessárias
 
 | Biblioteca  |  Link  | Complemento |
 | ------------------- | ------------------- | ------------------- |
