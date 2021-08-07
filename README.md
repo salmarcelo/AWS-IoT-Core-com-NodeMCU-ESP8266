@@ -17,7 +17,7 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
              
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
 
-# Bibliotecas Necessárias
+## Bibliotecas Necessárias
 
 | Biblioteca  |  Link  | Complemento |
 | ------------------- | ------------------- | ------------------- |
@@ -27,11 +27,11 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
 |  DH Sensor | [Sensor Temperatura](https://drive.google.com/file/d/16brDLNmOVzmQs6sFh-_CAMivQu-cn6kg/view) | Baixar somente se for utilizar o sensor de temperatura/umidade |
 |  Adafruit Sensor | [Sensor Temperatura](https://drive.google.com/file/d/19ypgAVNwn5f-kb4KDxFr0eOvMQz_yxSU/view) | Baixar somente se for utilizar o sensor de temperatura/umidade |
  
-# Passo-a-passo
+## Passo-a-passo
 
 Abaixo você verá as etapas necessárias de como realizar a integração do "Arduino" com o "IoT Core" da AWS
 
-## Instalação da IDE do Arduino
+### Instalação da IDE do Arduino
 Caso não tenha o **IDE** do Arduino instalado, deverá seguir os passos abaixo:
       
 #### Passo 01
