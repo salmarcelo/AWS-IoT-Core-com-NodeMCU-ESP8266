@@ -2,10 +2,10 @@
 
 ## Objetivo do Projeto
 
-Implementar a solução proposta, onde através do sensor instalado no **"Arduino" (ESP8266)**, irá capturar a Temperatura e Umidade e integrar com o **AWS IoT Core**, para posteriormente ser armazenado em **Banco de Dados - NoSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**   
+Implementar a solução proposta, onde através do sensor instalado no **"Arduino" (NodeMCU ESP8266)**, irá capturar a Temperatura e Umidade e integrar com o **AWS IoT Core**, para posteriormente ser armazenado em **Banco de Dados - NoSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**   
 Os códigos fonte do Arduino e da Função Lambda estão disponíveis na lista de arquivos na parte superior deste Git.   
 
-Vale lembrar que se ainda não possui o "Arduino" ESP8266, você pode executar as demais etapas deste projeto (Relacionadas propriamente a Cloud AWS), inclusive **realizar testes reais** com toda parte da AWS integrada diretamente na **Console do Serviço Iot Core**.
+Vale lembrar que se ainda não possui o NodeMCU ESP8266, você pode executar as demais etapas deste projeto (Relacionadas propriamente a Cloud AWS), inclusive **realizar testes reais** com toda parte da AWS integrada diretamente na **Console do Serviço Iot Core**.
 
 ## Desenho de Solução  
 
