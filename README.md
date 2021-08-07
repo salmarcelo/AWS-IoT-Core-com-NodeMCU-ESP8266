@@ -174,7 +174,7 @@ Agora temos que atachar a Policy ao Certificado
   . Selecione a policy criada no passo anterior e clique em **Attach**       
 
 #### Passo 09   
-A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
+A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
 **Osbervação:** A segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas dos tópicos de armazenamento de dados, criação de função Lambda, Trigger da função com o IoT Core, que estarão mais adiante.   
 
 ## Alterar Código Fonte
@@ -226,7 +226,7 @@ Alterar as informações conforme abaixo:
 ![image](https://user-images.githubusercontent.com/63315625/128585633-cd92a278-71a6-4669-8c2b-6a24b2918ff1.png)
 
 #### Passo 03   
-Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
+Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP8266.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
 
 ![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
 
