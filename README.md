@@ -121,7 +121,7 @@ Clicar em **Next**
 ![image](https://user-images.githubusercontent.com/63315625/128446986-07d573fb-c989-4f59-88bd-69d4ade879f5.png)
 
 Clicar em **Create thing**  
-Perceba que não estamos criando uma Policy, mas em ambiente Produtivo a sugestão é criar um usuário específico para IoT e criar a Policy contendo somente as permissões necessárias.
+Perceba que não estamos criando uma Policy neste momento. Faremos isso nos próximos passos   
 
 ![image](https://user-images.githubusercontent.com/63315625/128526078-63e3e216-acdb-4f91-90c6-01c27873c166.png)
 
@@ -148,7 +148,20 @@ Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisa
 
 ![image](https://user-images.githubusercontent.com/63315625/128538113-209f347a-40ae-4552-bc43-22e4c27fde5a.png)
 
-#### Passo 07
+#### Passo 07   
+Agora vamos criar a Policy e atachar a mesma no certificado   
+. No menu lateral, clicar em **Security**, **Policies** e **Create policy**  
+. Preencher as informações solicitadas:    
+  . name **"IoTSensorPolicy"**     
+  . Action **"Iot.*"**    
+  . Resource ARN **"*"**    
+  . Effect **Allow""    
+  . Clicar em **Create**   
+Obs: Perceba que neste caso estamos dando permissões geral para tudo que é relacionado ao IoT. Mas é possível, e indicado, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
+
+![image](https://user-images.githubusercontent.com/63315625/128606397-0e80655f-c96d-4dc7-8262-59d2ded13acc.png)
+
+#### Passo 08
 A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
 **Osbervação:** A segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas dos tópicos de armazenamento de dados, criação de função Lambda, Trigger da função com o IoT Core, que estarão mais adiante.   
 
@@ -159,8 +172,8 @@ No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publ
 ```
  //Informa os shadows de Publish e Subscribe
  const int MQTT_PORT = 8883;
- const char MQTT_SUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/update/get";
- const char MQTT_PUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/update";
+ const char MQTT_SUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/sensor/get";
+ const char MQTT_PUB_TOPIC[] = "$aws/things/XXXXXXX/shadow/name/sensor";
 ```
 
 Se **NÃO FOR UTILIZAR** o sensor de Temperatura e enviar dados hardcoded, é necessário comentar todos os códigos abaixo:
@@ -258,7 +271,7 @@ Continua para ambas as opções:
 
 ![image](https://user-images.githubusercontent.com/63315625/128567746-6f5ceb88-4950-4295-b40f-9571bb165bd0.png)
 
-**Nota:** O procedimento acima dá acesso total ao DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela" :)  
+**Nota:** O procedimento acima dá acesso total à todas as tabelas do DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela" :)  
 
 #### Criar Role
 No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
@@ -323,11 +336,11 @@ No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botã
 #### Passo 04   
 Preencher as informações conforme detalhes e imagem abaixo:   
 . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
-. No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "update" pelo nome do seu shadow.   
+. No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "sensor" pelo nome do seu shadow.   
 
 Exemplo:   
 ```   
-SELECT * FROM '$aws/things/myespwork/shadow/name/update'
+SELECT * FROM '$aws/things/myespwork/shadow/name/sensor'
 ```   
 
 #### Passo 05   
@@ -354,13 +367,14 @@ Você também pode ir no menu do Lambda function, selecionar a função criada e
 ![image](https://user-images.githubusercontent.com/63315625/128582976-6767895f-ce83-4f58-a44f-4fc4de79c5dc.png)
 
 ### Tudo Pronto \o/ \o/ \o/
-Agora é só testar.. Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
-Lembrando que se foram utilizados os nomes conforme os exemplos, você utilizará para esse propósito os seguintes shadows. Basta realizar os testes e verificar se os itens estão sendo gravados no DynamoDB.      
+Agora é só testar..   
+Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
+Lembrando que se foram utilizados os nomes conforme os exemplos, você utilizará para esse propósito os seguintes shadows. Basta realizar os testes e verificar se os itens estão sendo gravados no DynamoDB.     
 
 ```
 Shadows   
-$aws/things/myespwork/shadow/name/update
-$aws/things/myespwork/shadow/name/update/get
+$aws/things/myespwork/shadow/name/sensor
+$aws/things/myespwork/shadow/name/sensor/get
 
 JSON   
 {
@@ -368,8 +382,10 @@ JSON
   "Umidade": "60.00"
 }
 ```
-obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade, Para conhecer maiores detalhes vale a pena conferir a documentação na AWS
+obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade. Para conhecer maiores detalhes, vale a pena conferir a documentação na AWS
 ![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
+
+Espero que tenham gostado deste conteúdo 🌟
 
 ## Autor: 
 Marcelo Nardi (Sal)   
