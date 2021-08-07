@@ -34,10 +34,10 @@ Abaixo você verá as etapas necessárias de como realizar a integração do "Ar
 ## Instalação da IDE do Arduino
 Caso não tenha o **IDE** do Arduino instalado, deverá seguir os passos abaixo:
       
-### Passo 01
+#### Passo 01
 Faça o Download do IDE no link: https://www.arduino.cc/en/software e efetue a instalação   
 
-### Passo 02
+#### Passo 02
 Configurar o Arduino para poder programar o microcontrolador NODEMCU ESP8266.
 No menu, selecione **Arquivo / Preferências**, e cole o link abaixo no item **URLs Adicionais para Gerenciadores de Placas**, conforme imagem     
 ```
@@ -46,17 +46,17 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![image](https://user-images.githubusercontent.com/63315625/128394580-4798673f-d53b-401c-b6b0-df7aea81f02b.png)  
 
-### Passo 03
+#### Passo 03
 No menu, selecione **"Ferramentas / Placa / Gerenciador de Placas"**. No campo para pesquisa procure por ESP8266 e realize a instalação do pacote, selecionando "Instalar”  
 
 ![image](https://user-images.githubusercontent.com/63315625/128395106-631e7f36-8e10-42fc-85e6-b35b3088ee9f.png)  
 
-### Passo 04
+#### Passo 04
 No menu **"Ferramentas / Placa / ESP8266 Boards (v 3.0.2)"**, selecione o modelo **NodeMCU 1.0 (ESP-12E Module)**, conforme imagem abaixo:  
 
 ![image](https://user-images.githubusercontent.com/63315625/128522246-cac94d70-44a1-4385-ab37-7155b1f9a355.png)
 
-### Passo 05
+#### Passo 05
 Instalar as Bibliotecas necessárias, conforme lista de Bibliotecas. Lembrando que as últimas duas da lista são Bibliotecas para tratar o sensor de Temperatura e sua instalação é opcional dependendo do seu objetivo.
 Para realizar a instalação das Bibliotecas, é necessário:  
   . Baixar os Arquivos Zip das mesmas  
@@ -65,7 +65,7 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
   
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
-### Passo 06  
+#### Passo 06  
 Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.
 No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".
 Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
@@ -88,23 +88,23 @@ Agora vamos aos passos de criação do IoT na AWS. Posteriormente voltaremos à 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.amazon.com/pt/console/ 
       
-### Passo 01
+#### Passo 01
 Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"   
 Para este processo eu utilizei a Região **US West (N. California)us-west-1**. Caso utilize alguma outra região, podem existir diferenças entre as Consoles, mas de qualquer forma, conseguirá  realizar as etapas sem dificuldades :)
 
-### Passo 02
+#### Passo 02
 Na barra superior pesquisar o serviço IoT Core, conforme imagem abaixo: (Selecionar opção IoT Core)  
 
 ![image](https://user-images.githubusercontent.com/63315625/128445288-7a7478b9-997b-4190-965f-490e88bdfeaf.png)
 
 ![image](https://user-images.githubusercontent.com/63315625/128522567-8fa70005-a2e3-43e2-9f2f-d06393450a75.png)
 
-### Passo 03
+#### Passo 03
 Selecione a opção **"Manage / Things"** no menu lateral. Será apresentada a seguinte janela.  
 
 ![image](https://user-images.githubusercontent.com/63315625/128446067-b78614e0-4931-4b59-93cf-684e7e4c59eb.png)
 
-### Passo 04
+#### Passo 04
 Chegou a hora de criar a sua "coisa" (internet das coisas) :)  
 Para isto, basta Clicar no botão **Create things** e seguir os passos conforme imagens abaixo:   
 
@@ -129,7 +129,7 @@ Será aberta uma janela para que realize o download dos certificados gerados. **
 
 ![image](https://user-images.githubusercontent.com/63315625/128447630-56f068d8-e2b6-44ec-86c1-4b375ea00daa.png)
 
-### Passo 05
+#### Passo 05
 Criar a shadow do IoT Core, conforme imagens abaixo:  
 
 ![image](https://user-images.githubusercontent.com/63315625/128526910-1785484c-e256-45c2-afae-36498d3949ee.png)  
@@ -138,7 +138,7 @@ Criar a shadow do IoT Core, conforme imagens abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128502443-2538f7d5-3c83-4aa4-ac6e-540172151098.png)  
 
-### Passo 06
+#### Passo 06
 Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre Arduino e AWS
 Basta selecionar opção **Interact**, e clicar no botão **View Settings**, conforme imagens abaixo:  
 
@@ -148,13 +148,13 @@ Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisa
 
 ![image](https://user-images.githubusercontent.com/63315625/128538113-209f347a-40ae-4552-bc43-22e4c27fde5a.png)
 
-### Passo 07
+#### Passo 07
 A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.
 Lembrando que a segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas no tópico **Armazenar Dados** que estará mais adiante
 
 ## Alterar Código Fonte
 
-### Passo 01       
+#### Passo 01       
 No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
 ```
  //Informa os shadows de Publish e Subscribe
@@ -182,7 +182,7 @@ if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou tempe
    }
 ```
 
-### Passo 02    
+#### Passo 02    
 Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação do Arduino, conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128541576-6e5ac9a1-2e79-4dfd-93a2-76e63aa70f41.png)
@@ -191,7 +191,7 @@ Alterar as informações conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
 
-### Passo 03   
+#### Passo 03   
 Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
 
 ![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
@@ -252,7 +252,7 @@ Continua para ambas as opções:
 
 **Nota:** O procedimento acima dá acesso total ao DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela" :)  
 
-### Criar Role
+#### Criar Role
 No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
 
  ![image](https://user-images.githubusercontent.com/63315625/128569612-1a5cb6e6-c15b-4157-a26d-57bee8a58a0f.png)
@@ -345,7 +345,7 @@ Você também pode ir no menu do Lambda function, selecionar a função criada e
 
 ![image](https://user-images.githubusercontent.com/63315625/128582976-6767895f-ce83-4f58-a44f-4fc4de79c5dc.png)
 
-#### Tudo Pronto \o/ \o/ \o/
+### Tudo Pronto \o/ \o/ \o/
 Agora é só testar.. Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
 Lembrando que se foram utilizados os nomes conforme os exemplos, você utilizará para esse propósito os seguintes shadows. Basta realizar os testes e verificar se os itens estão sendo gravados no DynamoDB.      
 
@@ -367,5 +367,3 @@ obs: existem diversos shadows que podem ser utilizados conforme a sua necessidad
 Marcelo Nardi (Sal)   
 Arquiteto de Soluções   
 [LinkedIin](https://www.linkedin.com/in/marcelo-fabiano-villarinho-nardi-sal-989a168b/)
-
-
