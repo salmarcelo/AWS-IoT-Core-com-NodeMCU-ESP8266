@@ -10,7 +10,7 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
 
 ![image](https://user-images.githubusercontent.com/63315625/128583626-0e1305e9-5fb4-41e3-b542-95f54e4f6a31.png)
 
-# Pré-Requisitos  
+## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
        Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica    
