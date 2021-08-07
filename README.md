@@ -15,7 +15,9 @@ Vale lembrar que se ainda não possui um Arduino ESP8622, você pode executar as
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
-       Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica  
+       Se tiver o Arduino e não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica  
+       O Arduino pode ser comprado no mercadolivre ou em casas de robótica. Caso não tenha e for comprar, lembre-se de adquirir o modelo ESP8266, pois o código e bibliotecas citadas nesta projeto são específicas para ele. Você irá se surpreender com o que é possível fazer com ele.  
+       Estou usando o termo Arduino, pois é mais comum, mas a placa ESP8266 é de outro fabricante, porém totalmente compatível com a IDE do Arduino
                     
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
 
