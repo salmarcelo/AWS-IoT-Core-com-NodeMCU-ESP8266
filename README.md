@@ -307,7 +307,7 @@ Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecion
 #### Passo 02   
 Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
 
-![image](https://user-images.githubusercontent.com/63315625/128581799-84990f02-b4a9-4af4-bd2a-ad30ab1c7753.png)
+![image](https://user-images.githubusercontent.com/63315625/128585789-3611d0f8-42ae-4849-99cd-decec6dc1b72.png)
 
 #### Passo 03   
 No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
