@@ -2,11 +2,11 @@
 
 ## Objetivo do Projeto
 
-Através do sensor instalado no **"Arduino" (ESP8266)**, permitir a captura da Temperatura e Umidade e enviar para o **AWS IoT Core**, para posteriormente ser armazenado em **Banco de Dados - NOSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**
+Implementar a solução proposta, onde através do sensor instalado no **"Arduino" (ESP8266)**, irá capturar a Temperatura e Umidade e integrar com o **AWS IoT Core**, para posteriormente ser armazenado em **Banco de Dados - NOSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**
 Os códigos fonte do Arduino e da Função Lambda estão disponíveis na lista de arquivos na parte superior deste Git.   
 A Parte de armazenamento das informações em banco de dados, será opcional, portanto será o último tópico deste conteúdo, dado que não tem impacto no Programa do Arduino.    
 
-Vale lembrar que se ainda não possui um Arduino ESP8622, você pode executar as demais etapas deste projeto (Relacionadas propriamente a AWS), inclusive **realizar testes reais** (com toda parte da AWS integrada) diretamente na **Console do Serviço Iot Core**.
+Vale lembrar que se ainda não possui um Arduino ESP8622, você pode executar as demais etapas deste projeto (Relacionadas propriamente a Cloud AWS), inclusive **realizar testes reais** com toda parte da AWS integrada diretamente na **Console do Serviço Iot Core**.
 
 ## Desenho de Solução  
 
@@ -15,8 +15,8 @@ Vale lembrar que se ainda não possui um Arduino ESP8622, você pode executar as
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
-       Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica    
-             
+       Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica  
+                    
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
 
 ## Bibliotecas Necessárias
@@ -31,17 +31,17 @@ Vale lembrar que se ainda não possui um Arduino ESP8622, você pode executar as
  
 ## Passo-a-passo
 
-Abaixo você verá as etapas necessárias de como realizar a integração do "Arduino" com o "IoT Core" da AWS
+Abaixo você verá as etapas necessárias de como realizar a integração do "ESP8622" com o "IoT Core" da AWS
 
 ### Instalação da IDE do Arduino
-Caso não tenha o **IDE** do Arduino instalado, deverá seguir os passos abaixo:
       
 #### Passo 01
-Faça o Download do IDE no link: https://www.arduino.cc/en/software e efetue a instalação   
+Caso não tenha a **IDE do Arduino** instalada no seu computador, faça o Download do IDE no link: https://www.arduino.cc/en/software e efetue a instalação   
 
 #### Passo 02
-Configurar o Arduino para poder programar o microcontrolador NODEMCU ESP8266.
-No menu, selecione **Arquivo / Preferências**, e cole o link abaixo no item **URLs Adicionais para Gerenciadores de Placas**, conforme imagem     
+Configurar o Arduino para poder programar o microcontrolador **NodeMCU ESP8266.**   
+No menu, selecione **Arquivo / Preferências**, e cole o link abaixo no item **URLs Adicionais para Gerenciadores de Placas**, conforme imagem:     
+
 ```
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
@@ -49,16 +49,16 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ![image](https://user-images.githubusercontent.com/63315625/128394580-4798673f-d53b-401c-b6b0-df7aea81f02b.png)  
 
 #### Passo 03
-No menu, selecione **"Ferramentas / Placa / Gerenciador de Placas"**. No campo para pesquisa procure por ESP8266 e realize a instalação do pacote, selecionando "Instalar”  
+No menu, selecione **Ferramentas / Placa / Gerenciador de Placas**. No campo para pesquisa procure por **ESP8266** e realize a instalação do pacote, selecionando "Instalar”  
 
 ![image](https://user-images.githubusercontent.com/63315625/128395106-631e7f36-8e10-42fc-85e6-b35b3088ee9f.png)  
 
 #### Passo 04
-No menu **"Ferramentas / Placa / ESP8266 Boards (v 3.0.2)"**, selecione o modelo **NodeMCU 1.0 (ESP-12E Module)**, conforme imagem abaixo:  
+No menu **Ferramentas / Placa / ESP8266 Boards (v 3.0.2)**, selecione o modelo **NodeMCU 1.0 (ESP-12E Module)**, conforme imagem abaixo:  
 
 ![image](https://user-images.githubusercontent.com/63315625/128522246-cac94d70-44a1-4385-ab37-7155b1f9a355.png)
 
-#### Passo 05
+#### Passo 05   
 Instalar as Bibliotecas necessárias, conforme lista de Bibliotecas. Lembrando que as últimas duas da lista são Bibliotecas para tratar o sensor de Temperatura e sua instalação é opcional dependendo do seu objetivo.
 Para realizar a instalação das Bibliotecas, é necessário:  
   . Baixar os Arquivos Zip das mesmas  
@@ -70,32 +70,34 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
 #### Passo 06  
 . Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.    
 . No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".    
-. Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
-. No menu, selecione a opção **"Sketch / Adicionar Arquivo"** e selecione o arquivo **secret.h** baixado anteriormente   
+. Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** baixado no passo 01 no editor de sua preferência, copiar as linhas e colar no arquivo criado no Arduino IDE.  
+. No menu, selecione a opção **Sketch / Adicionar Arquivo** e selecione o arquivo **secret.h** baixado no passo 01     
 . Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP3622)**    
 **Observações:**  
-  O arquivo **IoTCore-AWS-ESP3622.ino**, contem os códigos necessários para realizar a integração com o IoT Core AWS. Nele contem diversas funções, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Envio de mensagens, Recebimento de Mensagens e por aí vai.  
+  O arquivo **IoTCore-AWS-ESP3622.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Publish, Subscribe, e por aí vai.  
   O arquivo **secrets.h**, conterá os certificados necessários para realização de uma conexão segura com o AWS IoT Core, bem como as informações para conexão no WiFi.
   
   Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e sem as mesmas seu programa não funcionará.    
   
-  A função **setup()** é executada apenas uma vez na inicialização do programa ou no reset do microcontrolador, e é nela que você deverá descrever as configurações e instruções gerais para preparar o programa antes que o loop principal seja executado. A função setup() é responsável pelas configurações iniciais da placa microcontroladora, tais como definições de pinos de entrada e saída, inicialização da comunicação serial, entre outras.  
+  Função **setup()**   
+  É executada apenas uma vez na inicialização ou no reset do microcontrolador, e é nela que você deverá descrever as configurações e instruções gerais para preparar o programa antes que o loop principal seja executado. A função setup() é responsável pelas configurações iniciais da placa.   
   
-  A função **loop()** é a função principal do programa e é executada continuamente enquanto a placa microcontroladora estiver ligada. É nesta função que todos os comandos e operações deverão ser escritos.    
+  Função **loop()**   
+  É a função principal do programa e é executada continuamente enquanto a placa microcontroladora estiver ligada. É nesta função que todos os comandos e operações deverão ser escritos. Literalmente ela fica em LOOP executando seus comandos, portanto, é comum controlar os Delays necessários para a correta execução.   
 
-Agora vamos aos passos de criação do IoT na AWS. Posteriormente voltaremos à IDE do Arduino para cmomplementar as informações do programa.  
+Agora vamos aos passos de **criação do IoT na AWS**. Posteriormente voltaremos à IDE do Arduino para cmomplementar as informações do programa, conforme o avanço dos próximos passos.  
 
-## Agora a "coisa" começou a ficar séria :) 
+## Agora a "coisa" começou a ficar séria :)  :)
 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site da [AWS](https://aws.amazon.com/pt/console/)    
       
 #### Passo 01
 Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"   
-Para este processo eu utilizei a Região **US West (N. California)us-west-1**. Caso utilize alguma outra região, podem existir diferenças entre as Consoles, mas de qualquer forma, conseguirá  realizar as etapas sem dificuldades :)
+Para este processo eu utilizei a Região **US West (N. California )us-west-1**. Caso utilize alguma outra região, podem existir diferenças entre as Consoles, mas de qualquer forma, conseguirá  realizar as etapas sem dificuldades :)
 
 #### Passo 02
-Na barra superior pesquisar o serviço IoT Core, conforme imagem abaixo: (Selecionar opção IoT Core)  
+Na barra superior pesquisar o serviço **IoT Core**, conforme imagem abaixo: (Selecionar opção IoT Core)  
 
 ![image](https://user-images.githubusercontent.com/63315625/128445288-7a7478b9-997b-4190-965f-490e88bdfeaf.png)
 
@@ -123,16 +125,17 @@ Clicar em **Next**
 ![image](https://user-images.githubusercontent.com/63315625/128446986-07d573fb-c989-4f59-88bd-69d4ade879f5.png)
 
 Clicar em **Create thing**  
-Perceba que não estamos criando uma Policy neste momento. Faremos isso nos próximos passos   
+Perceba que não estamos criando uma Policy neste momento. Faremos isso nos próximos passos, visando compreender melhor o formato da mesma.      
 
 ![image](https://user-images.githubusercontent.com/63315625/128526078-63e3e216-acdb-4f91-90c6-01c27873c166.png)
 
-Será aberta uma janela para que realize o download dos certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO**  momento de realizar esta etapa ** 
+Será aberta uma janela para que realize o download dos certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO** momento de realizar esta etapa ** 
+Estes certificados é que irão garantir uma conexão segura entre o dispositivo e o IoT AWS
 
 ![image](https://user-images.githubusercontent.com/63315625/128447630-56f068d8-e2b6-44ec-86c1-4b375ea00daa.png)
 
 #### Passo 05
-Criar a shadow do IoT Core, conforme imagens abaixo:   
+Criar a **Shadow** do IoT Core, conforme imagens abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128526910-1785484c-e256-45c2-afae-36498d3949ee.png)  
 
@@ -141,8 +144,8 @@ Criar a shadow do IoT Core, conforme imagens abaixo:
 ![image](https://user-images.githubusercontent.com/63315625/128584839-4888bad0-2df9-4f05-844f-208593e34a23.png)
 
 #### Passo 06
-Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre Arduino e AWS
-Basta selecionar a aba **Interact**, e clicar no botão **View Settings**, conforme imagens abaixo:  
+Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre o ESP8622 e a AWS   
+Basta selecionar a aba **Interact** e clicar no botão **View Settings**, conforme imagens abaixo:  
 
 ![image](https://user-images.githubusercontent.com/63315625/128584951-5528cc6f-b64c-42be-8485-3063b9b53464.png)
 
@@ -151,7 +154,7 @@ Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisa
 ![image](https://user-images.githubusercontent.com/63315625/128538113-209f347a-40ae-4552-bc43-22e4c27fde5a.png)
 
 #### Passo 07   
-Agora vamos criar a Policy e atachar a mesma no certificado   
+Agora vamos criar a Policy e atachar a mesma no certificado. Esta Policy é que irá permitir o uso dos serviços de IoT.      
 . No menu lateral, clicar em **Security**, **Policies** e **Create policy**  
 . Preencher as informações solicitadas:    
   . name **"IoTSensorPolicy"**     
@@ -159,11 +162,17 @@ Agora vamos criar a Policy e atachar a mesma no certificado
   . Resource ARN **"*"**    
   . Effect **Allow""    
   . Clicar em **Create**   
-Obs: Perceba que neste caso estamos dando permissões geral para tudo que é relacionado ao IoT. Mas é possível, e indicado, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
+Obs: Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é possível, e indicado pro melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
 
 ![image](https://user-images.githubusercontent.com/63315625/128606397-0e80655f-c96d-4dc7-8262-59d2ded13acc.png)
 
 #### Passo 08
+Agora temos que atachar a Policy ao Certificado   
+  . No menu lateral, clicar em **Security**, **Certificates** e selecione o Certificado que foi criado no passo 04.   
+  . Selecione a opção **Actions / Attach policy**   
+  . Selecione a policy criada no passo anterior e clique em **Attach**       
+
+#### Passo 09   
 A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
 **Osbervação:** A segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas dos tópicos de armazenamento de dados, criação de função Lambda, Trigger da função com o IoT Core, que estarão mais adiante.   
 
@@ -188,13 +197,14 @@ Se **NÃO FOR UTILIZAR** o sensor de Temperatura e enviar dados hardcoded, é ne
 DHT dht(DHTPIN, DHTTYPE); 
 
 //captura informações do sensor
-vlUmidade = dht.readHumidity(); //lê o valor da umidade e armazena na variável h do tipo float (aceita números com casas decimais)
-vlTemperatura = dht.readTemperature(); //lê o valor da temperatura e armazena na variável t do tipo float (aceita números com casas decimais)
+vlUmidade = dht.readHumidity(); //lê o valor da umidade e armazena na variável do tipo float (aceita números com casas decimais)
+vlTemperatura = dht.readTemperature(); //lê o valor da temperatura e armazena na variável do tipo float (aceita números com casas decimais)
 
 if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou temperatura são ou não um número
    Serial.println("Erro ao obter temperatura");
    return; //Caso não seja um número retorna
-   }
+   }   
+   
 ```
 
 #### Passo 02    
@@ -203,14 +213,14 @@ Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação 
 ![image](https://user-images.githubusercontent.com/63315625/128585628-c60d86ab-2d08-40a4-ac95-5782206e6adb.png)
 
 Alterar as informações conforme abaixo:   
-. Informar nas variáveis ssid e pass o nome da rede e a senha para conexão com wifi   
-. Informar na variável THINGNAME o nome da Thing criado no IoT Core   
-. Informar na variável MQTT_HOST o Endpoint criado para o Thing    
-. Informar as variáveis de certificado   
+. Informar nas variáveis **ssid** e **pass** o nome da rede e a senha para conexão com wifi   
+. Informar na variável **THINGNAME** o nome da Thing criado no IoT Core   
+. Informar na variável **MQTT_HOST** o Endpoint criado para o Thing    
+. Informar as variáveis de Certificados   
   . cacert - as informações contidas no certificado "AmazonRootCA1.pem"   
   . client_cert - informações contidas no certificado "xxxxxxx-certificate.pem"   
   . private_key - informações contidas no certificado "xxxxxx-private.pem.key"    
- Basta abrir os arquivos na pasta onde os downloads dos certificadosforam realizados, copiar o texto e colar, substituindo o texto **"COLE AQUI OS DADOS/INFORMAÇÕES...."    
+ Basta abrir os arquivos na pasta onde os downloads dos certificados foram realizados, copiar o texto e colar, substituindo o texto **"COLE AQUI OS DADOS/INFORMAÇÕES...."    
 
 ![image](https://user-images.githubusercontent.com/63315625/128585633-cd92a278-71a6-4669-8c2b-6a24b2918ff1.png)
 
@@ -228,15 +238,15 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 ![image](https://user-images.githubusercontent.com/63315625/128543833-2abbb9d9-7ef3-4aa2-a42f-e5050c8fc9c9.png)
 
 Selecionar opção **Tables** e clicar no botão **Create Table**  
-Neste tópico serei simplista e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato AAAAMMDDHHMMSS.
-Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da mesma, pois com certeza influenciarão em questões de **performance, custos de leitura, etc**. #Fica a Dica!!! 
+Neste tópico serei simplista e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato NUMBER, pois armazenaremos a chave com o Ano+Mês+Dia+Hora+Min+Seg (AAAAMMDDHHMMSS).   
+Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **performance, custos de leitura, etc**. #Fica a Dica!!! 
 
 ![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
 
 ![image](https://user-images.githubusercontent.com/63315625/128545036-ab1c4bea-971b-4b56-b858-411024f021ff.png)
 
 ### Policies e Roles
-Antes de criar a Função Lambda, vamos criar as permissões, dado que a Função irá acionar um serviço do DynamoDB   
+Antes de criar a Função Lambda, vamos criar as permissões, dado que a Função irá acionar um serviço do DynamoDB e para isso é necessário que as permissões seja concedidas.   
 
 #### Criar Policie
 No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **Create Policy**
@@ -267,13 +277,13 @@ No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **C
 . Clicar no botão **Next: Tags**    
 . Clicar no botão **Next: Review**    
 
-Continua para ambas as opções:  
+**Continua para ambas as opções:**   
 . Informar um nome para a policy ```(myPolicyDynamoDB)```   
 . Clicar no botão **Create policy**    
 
 ![image](https://user-images.githubusercontent.com/63315625/128567746-6f5ceb88-4950-4295-b40f-9571bb165bd0.png)
 
-**Nota:** O procedimento acima dá acesso total à todas as tabelas do DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela" :)  
+**Nota:** O procedimento acima dá acesso total à todas as tabelas do DynamoDB. Deixei desta forma, visando facilitar caso queiram criar serviços de consulta, etc. Normalmente damos somente os acessos necessários, como por exemplo: "Acesso somente à Putitem de uma determinada tabela e para um determinado recurso" :)  
 
 #### Criar Role
 No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Create role**   
