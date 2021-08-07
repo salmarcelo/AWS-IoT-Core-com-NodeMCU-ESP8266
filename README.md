@@ -69,13 +69,13 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
 #### Passo 06  
-. Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.    
+. Baixar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** disponibilizados na parte superior desta página.    
 . No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".    
-. Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** baixado no passo 01 no editor de sua preferência, copiar as linhas e colar no arquivo criado no Arduino IDE.  
+. Basta abrir o arquivo **IoTCore-AWS-ESP8266.ino** baixado no passo 01 no editor de sua preferência, copiar as linhas e colar no arquivo criado no Arduino IDE.  
 . No menu, selecione a opção **Sketch / Adicionar Arquivo** e selecione o arquivo **secret.h** baixado no passo 01     
-. Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP3622)**    
+. Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP8266)**    
 **Observações:**  
-  O arquivo **IoTCore-AWS-ESP3622.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Publish, Subscribe, e por aí vai.  
+  O arquivo **IoTCore-AWS-ESP8266.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Publish, Subscribe, e por aí vai.  
   O arquivo **secrets.h**, conterá os certificados necessários para realização de uma conexão segura com o AWS IoT Core, bem como as informações para conexão no WiFi.
   
   Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e sem as mesmas seu programa não funcionará.    
@@ -180,7 +180,7 @@ A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atua
 ## Alterar Código Fonte
 
 #### Passo 01       
-No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork). Substituir o "XXXXX" pelo nome do seu Thing.   
+No arquivo **IoTCore-AWS-ESP8266.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork). Substituir o "XXXXX" pelo nome do seu Thing.   
 ```
  //Informa os shadows de Publish e Subscribe
  const int MQTT_PORT = 8883;
