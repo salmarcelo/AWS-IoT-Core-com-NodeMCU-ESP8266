@@ -105,7 +105,7 @@ Selecione a opção **"Manage / Things"** no menu lateral. Será apresentada a s
 ![image](https://user-images.githubusercontent.com/63315625/128446067-b78614e0-4931-4b59-93cf-684e7e4c59eb.png)
 
 #### Passo 04
-Chegou a hora de criar a sua "coisa" (internet das coisas) :)  
+**Chegou a hora de criar a sua "coisa"** (IoT | Internet das coisas | Internet of Things) :)  
 Para isto, basta Clicar no botão **Create things** e seguir os passos conforme imagens abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128522934-16a0fbf6-d6e6-4412-9720-3c475d4ed4c1.png)
