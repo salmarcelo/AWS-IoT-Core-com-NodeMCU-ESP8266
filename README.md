@@ -32,7 +32,7 @@ Vale lembrar que se ainda não possui o "Arduino" ESP8266, você pode executar a
  
 ## Passo-a-passo
 
-Abaixo você verá as etapas necessárias de como realizar a integração do "ESP8622" com o "IoT Core" da AWS
+Abaixo você verá as etapas necessárias de como realizar a integração do "ESP8266" com o "IoT Core" da AWS
 
 ### Instalação da IDE do Arduino
       
