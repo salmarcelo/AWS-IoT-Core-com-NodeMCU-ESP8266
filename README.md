@@ -8,7 +8,7 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
 
 ## Desenho de Solução:  
 
-![image](https://user-images.githubusercontent.com/63315625/128429650-28329a7c-f80d-4298-94c8-0688077c0158.png)
+![image](https://user-images.githubusercontent.com/63315625/128581103-9f3fb39d-4901-41e4-890c-f6e0cec6c94d.png)   
 
 # Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
@@ -247,8 +247,8 @@ No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **C
 . Clicar no botão **Next: Tags**    
 . Clicar no botão **Next: Review**    
 
-Continua.....   
-. Informar um nome para a policy (myPolicyDynamoDB)   
+Continua para ambas as opções:  
+. Informar um nome para a policy ```(myPolicyDynamoDB)```   
 . Clicar no botão **Create policy**    
 
 ![image](https://user-images.githubusercontent.com/63315625/128567746-6f5ceb88-4950-4295-b40f-9571bb165bd0.png)
@@ -267,7 +267,7 @@ No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Crea
 
  . Clicar em **Next: tags**   
  . Clicar em **Next: Review**   
- . Informar um nome para a role (myRoleLambda-Dynamo)      
+ . Informar um nome para a role ```(myRoleLambda-Dynamo)```   
  . Clicar no botão **Create role**    
  
  ![image](https://user-images.githubusercontent.com/63315625/128570306-3d76b98a-db6e-49a8-ba62-2792adf61ade.png)
@@ -303,7 +303,26 @@ Para realizar um teste, acesse a aba Test, preencha as informações do JSON de 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
 ### Triggar o IoT Core com a Função Lambda   
-Agora é necessário realizar a configuração para que ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme o Desenho de Solução
+Agora que temos nossa Function Lambda criada, é necessário realizar a configuração para que, ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
+
+Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
+
+Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
+
+![image](https://user-images.githubusercontent.com/63315625/128581799-84990f02-b4a9-4af4-bd2a-ad30ab1c7753.png)
+
+No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
+
+Preencher as informações conforme detalhes e imagem abaixo:   
+. Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
+. No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "update" pelo nome do seu shadow.   
+
+Exemplo:   
+``` SELECT * FROM '$aws/things/myespwork/shadow/name/update'
+```
+
+![image](https://user-images.githubusercontent.com/63315625/128581604-195dfd3e-9959-411a-9311-d3fbfe3b6882.png)
+
 
 
 ## Autor: 
