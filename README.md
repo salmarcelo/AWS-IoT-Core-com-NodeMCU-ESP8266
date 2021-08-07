@@ -1,4 +1,4 @@
-# AWS IoT Core com Arduino ESP8266
+# AWS IoT Core com "Arduino" (NodeMCU ESP8266)
 
 ## Objetivo do Projeto
 
