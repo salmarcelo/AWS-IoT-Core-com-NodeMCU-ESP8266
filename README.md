@@ -86,7 +86,7 @@ Agora vamos aos passos de criação do IoT na AWS. Posteriormente voltaremos à 
 ## Agora a "coisa" começou a ficar séria :) 
 
 ## Criação do IoT (Things) na AWS
-Caso não tenha uma conta na AWS, efetue o cadastramento no site https://aws.amazon.com/pt/console/ 
+Caso não tenha uma conta na AWS, efetue o cadastramento no site da [AWS](https://aws.amazon.com/pt/console/)    
       
 #### Passo 01
 Acessar a Console da AWS (AWS Management Console) e escolher a Região de sua preferência (ex: São Paulo é "South America (São Paulo) sa-east-1)"   
