@@ -305,25 +305,59 @@ Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluíd
 ### Triggar o IoT Core com a Função Lambda   
 Agora que temos nossa Function Lambda criada, é necessário realizar a configuração para que, ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
 
-Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
+1) Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
 
-Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
+2) Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128581799-84990f02-b4a9-4af4-bd2a-ad30ab1c7753.png)
 
-No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
+3) No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
 
-Preencher as informações conforme detalhes e imagem abaixo:   
+4) Preencher as informações conforme detalhes e imagem abaixo:   
 . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
 . No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "update" pelo nome do seu shadow.   
 
 Exemplo:   
-``` SELECT * FROM '$aws/things/myespwork/shadow/name/update'
+```   
+SELECT * FROM '$aws/things/myespwork/shadow/name/update'
+```   
+5) Clicar no botão **Add action** do item **Set one or more actions**
+   Irá aparecer a lista de serviços que podemos triggar. Para a finalidade proposta   
+   Selecione a opção **Send a message to a Lambda function** e clique em **Configure action**   
+   Agora você irá escolher o qual função será invokada quando o IoT Core for acionado. Selecionar a função a criada e em seguida clicar em **Add action**.    
+   Para finalizar a criação da rule, clique no botão **Create rule**    
+   
+![image](https://user-images.githubusercontent.com/63315625/128582274-79940d1a-c57a-4cfc-93e8-93d266c1fc1f.png)
+
+![image](https://user-images.githubusercontent.com/63315625/128582387-d10830ca-4106-4968-a669-76bd239efe36.png)
+
+![image](https://user-images.githubusercontent.com/63315625/128582583-cec40e3e-4979-42ce-936a-e4e498d3ba7d.png)
+
+![image](https://user-images.githubusercontent.com/63315625/128582635-4a08c372-27cb-44e4-a145-a9ef7cc9e4e8.png)
+
+Irá aparecer a tela abaixo:   
+
+![image](https://user-images.githubusercontent.com/63315625/128582799-9f33eb69-7336-4dbf-bad2-347edd79aef3.png)   
+
+Você também pode ir no menu do Lambda function, selecionar a função criada e perceber que o trigger foi criado com sucesso, conforme imagem abaixo:   
+
+![image](https://user-images.githubusercontent.com/63315625/128582976-6767895f-ce83-4f58-a44f-4fc4de79c5dc.png)
+
+Tudo Pronto !!! Agora é só testar.. Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
+Lembrando que se foram utilizados os nomes conforme os exemplos, você utilizará para esse propósito os seguintes shadows. Basta realizar os testes e verificar se os itens estão sendo gravados no DynamoDB.      
 ```
+Shadows   
+$aws/things/myespwork/shadow/name/update
+$aws/things/myespwork/shadow/name/update/get
 
-![image](https://user-images.githubusercontent.com/63315625/128581604-195dfd3e-9959-411a-9311-d3fbfe3b6882.png)
-
-
+JSON   
+{
+  "Temperatura": "28.80",
+  "Umidade": "60.00"
+}
+```
+obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade
+![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
 
 ## Autor: 
 Marcelo Nardi (Sal)   
