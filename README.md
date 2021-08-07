@@ -188,6 +188,14 @@ Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação 
 ![image](https://user-images.githubusercontent.com/63315625/128585628-c60d86ab-2d08-40a4-ac95-5782206e6adb.png)
 
 Alterar as informações conforme abaixo:   
+. Informar nas variáveis ssid e pass o nome da rede e a senha para conexão com wifi   
+. Informar na variável THINGNAME o nome da Thing criado no IoT Core   
+. Informar na variável MQTT_HOST o Endpoint criado para o Thing    
+. Informar as variáveis de certificado   
+   . cacert - as informações contidas no certificado "AmazonRootCA1.pem"   
+   . client_cert - informações contidas no certificado "xxxxxxx-certificate.pem"   
+   . private_key - informações contidas no certificado "xxxxxx-private.pem.key"    
+ Basta abrir os arquivos na pasta onde os downloads dos certificadosforam realizados, copiar o texto e colar, substituindo o texto **"COLE AQUI OS DADOS/INFORMAÇÕES...."    
 
 ![image](https://user-images.githubusercontent.com/63315625/128585633-cd92a278-71a6-4669-8c2b-6a24b2918ff1.png)
 
