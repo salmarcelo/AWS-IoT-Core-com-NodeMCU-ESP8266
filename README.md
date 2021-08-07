@@ -9,7 +9,7 @@ Vale lembrar que se ainda não possui o "Arduino" ESP8266, você pode executar a
 
 ## Desenho de Solução  
 
-![image](https://user-images.githubusercontent.com/63315625/128583626-0e1305e9-5fb4-41e3-b542-95f54e4f6a31.png)
+![image](https://user-images.githubusercontent.com/63315625/128612395-d6c3fcbc-ddfd-4337-976b-b1962bead8fe.png)
 
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
