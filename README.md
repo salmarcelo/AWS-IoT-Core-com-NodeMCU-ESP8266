@@ -130,7 +130,7 @@ Será aberta uma janela para que realize o download dos certificados gerados. **
 ![image](https://user-images.githubusercontent.com/63315625/128447630-56f068d8-e2b6-44ec-86c1-4b375ea00daa.png)
 
 #### Passo 05
-Criar a shadow do IoT Core, conforme imagens abaixo:  
+Criar a shadow do IoT Core, conforme imagens abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128526910-1785484c-e256-45c2-afae-36498d3949ee.png)  
 
