@@ -303,7 +303,7 @@ No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Crea
  ![image](https://user-images.githubusercontent.com/63315625/128570306-3d76b98a-db6e-49a8-ba62-2792adf61ade.png)
 
 ### Função Lambda
-Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
+Na console da AWS, selecione o serviço **Lambda**, conforme imagem abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)  
 
@@ -315,13 +315,19 @@ A função será gerada e apresentada na Console
 
 ![image](https://user-images.githubusercontent.com/63315625/128548003-f00c452f-21b4-4b17-bd11-ca4d7d3ea903.png)
    
-Copiar o conteúdo do arquivo **RegistroTemperatura.py** e substituir a função padrão criada automáticamente.
+Copiar o conteúdo do arquivo **RegistroTemperatura.py** disponibilizado neste Git e substituir a função padrão criada de forma padrão.   
 Atentar para **substituir o nome da tabela** com o nome da tabela que **foi criada**
 Clicar em **Deploy**
 
 ![image](https://user-images.githubusercontent.com/63315625/128553260-08486d71-73e7-4922-8922-c24aa47f5b89.png)
 
-Para realizar um teste, acesse a aba Test, preencha as informações do JSON de entrada e clique em **Test**
+Para realizar um teste, acesse a aba **Test**, preencha as informações do JSON de entrada (exemplo abaixo) e clique em **Test**   
+```
+{
+  "Temperatura": "28.80",
+  "Umidade": "60.00"
+}
+```
 
 ![image](https://user-images.githubusercontent.com/63315625/128554109-9d321568-ff74-4f15-91d4-4093b349961d.png)
 
@@ -332,10 +338,10 @@ Para realizar um teste, acesse a aba Test, preencha as informações do JSON de 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
 ### Triggar o IoT Core com a Função Lambda   
-Agora que temos nossa Function Lambda criada, é necessário realizar a configuração para que, ao receber um Publish, o IoT Core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
+Agora que temos nossa **Function Lambda criada**, é necessário realizar a configuração para que, ao receber um Publish, o IoT Core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
 
 #### Passo 01   
-Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
+Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**. Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
 
 #### Passo 02   
 Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
@@ -347,8 +353,9 @@ No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botã
 
 #### Passo 04   
 Preencher as informações conforme detalhes e imagem abaixo:   
-. Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
-. No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "sensor" pelo nome do seu shadow.   
+  . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
+  . No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for sensor, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "sensor" pelo nome do seu shadow.   
+  . Neste caso, estamos indicando que para cada  Publish recebido no tópico, ele irá acionar a função Lambda enviando as informações recebidas, ms você pode reestrutura a sua query da "forma que quiser", ou seja, consegue filtrar em qual condição você quer se seja acionada a função Lambda.   
 
 Exemplo:   
 ```   
@@ -357,10 +364,10 @@ SELECT * FROM '$aws/things/myespwork/shadow/name/sensor'
 
 #### Passo 05   
 Clicar no botão **Add action** do item **Set one or more actions**
-   Irá aparecer a lista de serviços que podemos triggar. Para a finalidade proposta   
-   Selecione a opção **Send a message to a Lambda function** e clique em **Configure action**   
-   Agora você irá escolher o qual função será invokada quando o IoT Core for acionado. Selecionar a função a criada e em seguida clicar em **Add action**.    
-   Para finalizar a criação da rule, clique no botão **Create rule**    
+  . Irá aparecer a lista de serviços que podemos triggar.   
+  . Para a finalidade proposta, selecione a opção **Send a message to a Lambda function** e clique em **Configure action**   
+  . Agora você irá escolher o qual função será invokada quando o IoT Core for acionado. Selecionar a função a criada e em seguida clicar em **Add action**.    
+  . Para finalizar a criação da rule, clique no botão **Create rule**    
    
 ![image](https://user-images.githubusercontent.com/63315625/128582274-79940d1a-c57a-4cfc-93e8-93d266c1fc1f.png)
 
@@ -394,6 +401,8 @@ JSON
   "Umidade": "60.00"
 }
 ```
+**Obs 01:** Se você estiver com o Arduino conectado ao cabo USB ou Bateria (ou seja ligado), ele já estará executando os comandos que foram programados. Para isso, basta acessar a Console do Arduino, no menu **Ferramentas / Monitor Serial"** e acompanhar: 
+
 obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade. Para conhecer maiores detalhes, vale a pena conferir a documentação na AWS
 ![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
 
