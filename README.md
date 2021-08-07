@@ -66,18 +66,18 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
 #### Passo 06  
-Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.
-No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".
-Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
-No menu, selecione a opção **"Sketch / Adicionar Arquivo"** e selecione o arquivo **secret.h** baixado anteriormente
-
-Observações:  
+. Baixar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** disponibilizados na parte superior desta página.    
+. No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".    
+. Basta abrir o arquivo **IoTCore-AWS-ESP3622.ino** no  editor de sua preferência,  copiar as linhas e colar no arquivo criado no Arduino IDE.  
+. No menu, selecione a opção **"Sketch / Adicionar Arquivo"** e selecione o arquivo **secret.h** baixado anteriormente   
+. Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP3622)**    
+**Observações:**  
   O arquivo **IoTCore-AWS-ESP3622.ino**, contem os códigos necessários para realizar a integração com o IoT Core AWS. Nele contem diversas funções, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Envio de mensagens, Recebimento de Mensagens e por aí vai.  
-  O arquivo **secrets.h**, contem os certificados necessários para realização de uma conexão segura com o AWS IoT Core.  
+  O arquivo **secrets.h**, conterá os certificados necessários para realização de uma conexão segura com o AWS IoT Core, bem como as informações para conexão no WiFi.
   
   Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e sem as mesmas seu programa não funcionará.    
   
-  A função **setup()** é executada apenas uma vez na inicialização do programa ou reset do microcontrolador, e é nela que você deverá descrever as configurações e instruções gerais para preparar o programa antes que o loop principal seja executado. Em outras palavras, a função setup() é responsável pelas configurações iniciais da placa microcontroladora, tais como definições de pinos de entrada e saída, inicialização da comunicação serial, entre outras.  
+  A função **setup()** é executada apenas uma vez na inicialização do programa ou no reset do microcontrolador, e é nela que você deverá descrever as configurações e instruções gerais para preparar o programa antes que o loop principal seja executado. A função setup() é responsável pelas configurações iniciais da placa microcontroladora, tais como definições de pinos de entrada e saída, inicialização da comunicação serial, entre outras.  
   
   A função **loop()** é a função principal do programa e é executada continuamente enquanto a placa microcontroladora estiver ligada. É nesta função que todos os comandos e operações deverão ser escritos.    
 
@@ -136,26 +136,26 @@ Criar a shadow do IoT Core, conforme imagens abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128501861-041aaad2-b039-4fc3-942b-fb67dc770b30.png)  
 
-![image](https://user-images.githubusercontent.com/63315625/128502443-2538f7d5-3c83-4aa4-ac6e-540172151098.png)  
+![image](https://user-images.githubusercontent.com/63315625/128584839-4888bad0-2df9-4f05-844f-208593e34a23.png)
 
 #### Passo 06
 Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre Arduino e AWS
-Basta selecionar opção **Interact**, e clicar no botão **View Settings**, conforme imagens abaixo:  
+Basta selecionar a aba **Interact**, e clicar no botão **View Settings**, conforme imagens abaixo:  
 
-![image](https://user-images.githubusercontent.com/63315625/128537785-e5b462c3-7a48-46a7-8d47-0f3dbf7e3bc1.png)
+![image](https://user-images.githubusercontent.com/63315625/128584951-5528cc6f-b64c-42be-8485-3063b9b53464.png)
 
 Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisaremos dele nos próximos passos.  
 
 ![image](https://user-images.githubusercontent.com/63315625/128538113-209f347a-40ae-4552-bc43-22e4c27fde5a.png)
 
 #### Passo 07
-A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.
-Lembrando que a segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas no tópico **Armazenar Dados** que estará mais adiante
+A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP3622.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
+**Osbervação:** A segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas dos tópicos de armazenamento de dados, criação de função Lambda, Trigger da função com o IoT Core, que estarão mais adiante.   
 
 ## Alterar Código Fonte
 
 #### Passo 01       
-No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
+No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork). Substituir o "XXXXX" pelo nome do seu Thing.   
 ```
  //Informa os shadows de Publish e Subscribe
  const int MQTT_PORT = 8883;
@@ -185,11 +185,11 @@ if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou tempe
 #### Passo 02    
 Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação do Arduino, conforme abaixo:
 
-![image](https://user-images.githubusercontent.com/63315625/128541576-6e5ac9a1-2e79-4dfd-93a2-76e63aa70f41.png)
+![image](https://user-images.githubusercontent.com/63315625/128585628-c60d86ab-2d08-40a4-ac95-5782206e6adb.png)
 
 Alterar as informações conforme abaixo:   
 
-![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
+![image](https://user-images.githubusercontent.com/63315625/128585633-cd92a278-71a6-4669-8c2b-6a24b2918ff1.png)
 
 #### Passo 03   
 Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
@@ -206,7 +206,7 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
 Selecionar opção **Tables** e clicar no botão **Create Table**  
 Neste tópico serei simplista e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato AAAAMMDDHHMMSS.
-Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da mesma, pois com certeza influenciarão em questão de performance, custos de leitura, etc. #Fica a Dica!!! 
+Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da mesma, pois com certeza influenciarão em questões de **performance, custos de leitura, etc**. #Fica a Dica!!! 
 
 ![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
 
