@@ -145,7 +145,7 @@ Criar a **Shadow** do IoT Core, conforme imagens abaixo:
 ![image](https://user-images.githubusercontent.com/63315625/128584839-4888bad0-2df9-4f05-844f-208593e34a23.png)
 
 #### Passo 06
-Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre o ESP8622 e a AWS   
+Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre o ESP8266 e a AWS   
 Basta selecionar a aba **Interact** e clicar no botão **View Settings**, conforme imagens abaixo:  
 
 ![image](https://user-images.githubusercontent.com/63315625/128584951-5528cc6f-b64c-42be-8485-3063b9b53464.png)
