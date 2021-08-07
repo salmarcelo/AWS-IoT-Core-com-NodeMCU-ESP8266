@@ -8,15 +8,14 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
 
 ## Desenho de Solução:  
 
-![image](https://user-images.githubusercontent.com/63315625/128581103-9f3fb39d-4901-41e4-890c-f6e0cec6c94d.png)   
+![image](https://user-images.githubusercontent.com/63315625/128583626-0e1305e9-5fb4-41e3-b542-95f54e4f6a31.png)
 
 # Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
-       Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou ramdômica
-      
+       Se não tiver o Sensor, poderá simular enviando uma informação hardcoded ou ramdômica    
+             
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
-
 
 # Bibliotecas Necessárias
 
@@ -32,7 +31,7 @@ A Parte de armazenamento das informações em banco de dados, será opcional, po
 
 Abaixo você verá as etapas necessárias de como realizar a integração do "Arduino" com o "IoT Core" da AWS
 
-## Instalação do Arduino
+## Instalação da IDE do Arduino
 Caso não tenha o **IDE** do Arduino instalado, deverá seguir os passos abaixo:
       
 ### Passo 01
@@ -100,12 +99,10 @@ Na barra superior pesquisar o serviço IoT Core, conforme imagem abaixo: (Seleci
 
 ![image](https://user-images.githubusercontent.com/63315625/128522567-8fa70005-a2e3-43e2-9f2f-d06393450a75.png)
 
-
 ### Passo 03
 Selecione a opção **"Manage / Things"** no menu lateral. Será apresentada a seguinte janela.  
 
 ![image](https://user-images.githubusercontent.com/63315625/128446067-b78614e0-4931-4b59-93cf-684e7e4c59eb.png)
-
 
 ### Passo 04
 Chegou a hora de criar a sua "coisa" (internet das coisas) :)  
@@ -157,8 +154,8 @@ Lembrando que a segunda parte de configuração na AWS é opcional, caso realmen
 
 ## Alterar Código Fonte
 
-### **IoTCore-AWS-ESP3622.ino**  
-Alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
+### Passo 01       
+No arquivo **IoTCore-AWS-ESP3622.ino**, alterar as informações de Shadows Publish e Subscribe, com o Thing name que você definiu (no exemplo usamos myespwork)
 ```
  //Informa os shadows de Publish e Subscribe
  const int MQTT_PORT = 8883;
@@ -185,7 +182,7 @@ if (isnan(vlUmidade) || isnan(vlTemperatura)) { //Verifica se a umidade ou tempe
    }
 ```
 
-### **secret.h**   
+### Passo 02    
 Selecionar o arquivo **secret.h** que foi incluído no passo 06 da Instalação do Arduino, conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128541576-6e5ac9a1-2e79-4dfd-93a2-76e63aa70f41.png)
@@ -194,7 +191,8 @@ Alterar as informações conforme abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128542094-8ca64ca4-e1b9-4448-9632-fa4949229264.png)
 
-### Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
+### Passo 03   
+Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP3622.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
 
 ![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
 
@@ -221,7 +219,6 @@ Antes de criar a Função Lambda, vamos criar as permissões, dado que a Funçã
 No Identity and Access Management (IAM), Clicar em **Policies** e em seguida **Create Policy**
 
 ![image](https://user-images.githubusercontent.com/63315625/128567146-0228f4d5-d509-401b-b1a4-5955a5fd3fc3.png)
-
 
 **Opção 01 - Clicar em JSON e colar a Policy abaixo**   
 
@@ -277,7 +274,6 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)  
 
-
 Selecionar opção **Function** e clicar em **Create function** e preencher as informações conforme imagem abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128571298-34939237-991c-4b33-b6ad-dc67ff03ae3d.png)
@@ -303,17 +299,21 @@ Para realizar um teste, acesse a aba Test, preencha as informações do JSON de 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
 ### Triggar o IoT Core com a Função Lambda   
-Agora que temos nossa Function Lambda criada, é necessário realizar a configuração para que, ao receber um Publish, o IoT core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
+Agora que temos nossa Function Lambda criada, é necessário realizar a configuração para que, ao receber um Publish, o IoT Core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
 
-1) Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
+#### Passo 01   
+Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**.Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
 
-2) Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
+#### Passo 02   
+Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128581799-84990f02-b4a9-4af4-bd2a-ad30ab1c7753.png)
 
-3) No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
+#### Passo 03   
+No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botão **Create a rule** 
 
-4) Preencher as informações conforme detalhes e imagem abaixo:   
+#### Passo 04   
+Preencher as informações conforme detalhes e imagem abaixo:   
 . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
 . No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for update, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "update" pelo nome do seu shadow.   
 
@@ -321,7 +321,9 @@ Exemplo:
 ```   
 SELECT * FROM '$aws/things/myespwork/shadow/name/update'
 ```   
-5) Clicar no botão **Add action** do item **Set one or more actions**
+
+#### Passo 05   
+Clicar no botão **Add action** do item **Set one or more actions**
    Irá aparecer a lista de serviços que podemos triggar. Para a finalidade proposta   
    Selecione a opção **Send a message to a Lambda function** e clique em **Configure action**   
    Agora você irá escolher o qual função será invokada quando o IoT Core for acionado. Selecionar a função a criada e em seguida clicar em **Add action**.    
@@ -343,8 +345,10 @@ Você também pode ir no menu do Lambda function, selecionar a função criada e
 
 ![image](https://user-images.githubusercontent.com/63315625/128582976-6767895f-ce83-4f58-a44f-4fc4de79c5dc.png)
 
-Tudo Pronto !!! Agora é só testar.. Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
+#### Tudo Pronto \o/ \o/ \o/
+Agora é só testar.. Você pode começar a testar diretamente pela console da AWS, efetuando os Publish e Subscribe no tópico criado.  
 Lembrando que se foram utilizados os nomes conforme os exemplos, você utilizará para esse propósito os seguintes shadows. Basta realizar os testes e verificar se os itens estão sendo gravados no DynamoDB.      
+
 ```
 Shadows   
 $aws/things/myespwork/shadow/name/update
@@ -356,7 +360,7 @@ JSON
   "Umidade": "60.00"
 }
 ```
-obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade
+obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade, Para conhecer maiores detalhes vale a pena conferir a documentação na AWS
 ![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
 
 ## Autor: 
