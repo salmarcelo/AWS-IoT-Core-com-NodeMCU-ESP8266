@@ -5,7 +5,7 @@
 Implementar a solução proposta, onde através do sensor instalado no **"Arduino" (NodeMCU ESP8266)**, irá capturar a Temperatura e Umidade e integrar com o **AWS IoT Core**, para posteriormente ser armazenado em **Banco de Dados - NoSQL (DynamoDB)**, através de uma **função Lambda (Pyhton)**. A linguagem de programação do Arduino utilizada neste contexto é a **Linguagem "C"**   
 Os códigos fonte do Arduino e da Função Lambda estão disponíveis na lista de arquivos na parte superior deste Git.   
 
-Vale lembrar que se ainda não possui o NodeMCU ESP8266, você pode executar as demais etapas deste projeto (Relacionadas propriamente a Cloud AWS), inclusive **realizar testes reais** na **Console do Serviço Iot Core** com toda parte da AWS integrada (IoT Core + Lambda + DynamoDB).   
+Vale lembrar que, se ainda não possui o NodeMCU ESP8266, você pode executar as demais etapas deste projeto (Relacionadas propriamente à Cloud AWS), inclusive **realizar testes reais** na **Console do Serviço Iot Core** com toda parte da AWS integrada (IoT Core + Lambda + DynamoDB).   
 
 ## Desenho de Solução  
 
@@ -15,7 +15,7 @@ Vale lembrar que se ainda não possui o NodeMCU ESP8266, você pode executar as 
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
        Se tiver o Arduino e não tiver o Sensor, poderá simular enviando uma informação hardcoded ou randômica  
-       O Arduino pode ser comprado no mercadolivre ou em casas de robótica. Caso não tenha e for comprar, lembre-se de adquirir o modelo ESP8266, pois o código e bibliotecas citadas nesta projeto são específicas para ele. Você irá se surpreender com o que é possível fazer com ele.  
+       O Arduino pode ser comprado no mercadolivre ou em casas de robótica. Caso não tenha e for comprar, lembre-se de adquirir o **modelo NodeMCU ESP8266**, pois o código e bibliotecas citadas nesta projeto são específicas para este modelo. Você irá se surpreender com o que é possível fazer com ele.  
        Estou usando o termo Arduino, pois é mais comum, mas a placa ESP8266 é de outro fabricante, porém totalmente compatível com a IDE do Arduino
                     
    ![image](https://user-images.githubusercontent.com/63315625/128514373-53c2cbf2-ccf0-4246-a93a-1cbd96cecfa0.png)
@@ -103,12 +103,12 @@ Na barra superior pesquisar o serviço **IoT Core**, conforme imagem abaixo: (Se
 
 ![image](https://user-images.githubusercontent.com/63315625/128445288-7a7478b9-997b-4190-965f-490e88bdfeaf.png)
 
-![image](https://user-images.githubusercontent.com/63315625/128522567-8fa70005-a2e3-43e2-9f2f-d06393450a75.png)
+![image](https://user-images.githubusercontent.com/63315625/128633741-524aa3b0-430d-4dd2-86ff-e6c76071797f.png)   
 
 #### Passo 03
 Selecione a opção **"Manage / Things"** no menu lateral. Será apresentada a seguinte janela.  
 
-![image](https://user-images.githubusercontent.com/63315625/128446067-b78614e0-4931-4b59-93cf-684e7e4c59eb.png)
+![image](https://user-images.githubusercontent.com/63315625/128633805-406c1d13-67f0-4eb8-8912-a6444e46f0f1.png)  
 
 #### Passo 04
 **Chegou a hora de criar a sua "coisa"** (IoT | Internet das coisas | Internet of Things) :)  
@@ -245,7 +245,7 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 ![image](https://user-images.githubusercontent.com/63315625/128543833-2abbb9d9-7ef3-4aa2-a42f-e5050c8fc9c9.png)
 
 Selecionar opção **Tables** e clicar no botão **Create Table**  
-Neste tópico serei simplista e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato NUMBER, pois armazenaremos a chave com o Ano+Mês+Dia+Hora+Min+Seg (AAAAMMDDHHMMSS).   
+Neste tópico "vamos fazer o básico" e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato NUMBER, pois armazenaremos a chave com o Ano+Mês+Dia+Hora+Min+Seg (AAAAMMDDHHMMSS).   
 Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **performance, custos de leitura, etc**. #Fica a Dica!!! 
 
 ![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
