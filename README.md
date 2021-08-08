@@ -160,10 +160,10 @@ Agora copie o endereço Endpoint apresentado e cole em algum editor pois precisa
 Agora vamos criar a Policy e atachar a mesma no certificado. Esta Policy é que irá permitir o uso dos serviços de IoT.      
 . No menu lateral, clicar em **Security**, **Policies** e **Create policy**  
 . Preencher as informações solicitadas:    
-  . name **"IoTSensorPolicy"**     
-  . Action **"Iot.*"**    
-  . Resource ARN **"*"**    
-  . Effect **Allow""    
+  . name ```IoTSensorPolicy```     
+  . Action ```Iot.*```    
+  . Resource ARN ```*```     
+  . Effect ```Allow```    
   . Clicar em **Create**   
 **Obs:** Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é indicado por melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: Permitir somente Subscriber para um determinado Thing/Tópico).   
 
@@ -330,7 +330,7 @@ Clicar em **Deploy**
 
 ![image](https://user-images.githubusercontent.com/63315625/128553260-08486d71-73e7-4922-8922-c24aa47f5b89.png)
 
-Para realizar um teste, acesse a aba **Test**, preencha as informações do JSON de entrada (exemplo abaixo) e clique em **Test**   
+Para realizar um teste, acesse a aba **Test**, preencha as informações do JSON de entrada (exemplo abaixo), informe o name do Test (qualquer nome) e clique em **Test**   
 ```
 {
   "Temperatura": "28.80",
