@@ -75,10 +75,10 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
 . No menu, selecione a opção **Sketch / Adicionar Arquivo** e selecione o arquivo **secret.h** baixado no passo 01     
 . Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP8266)**    
 **Observações:**  
-  O arquivo **IoTCore-AWS-ESP8266.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS, desde conexão com WiFi, Conexão comm MQTT, Geração de JSON, Publish, Subscribe, e por aí vai.  
+  O arquivo **IoTCore-AWS-ESP8266.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS(MQTT), Geração de JSON, Publish, Subscribe, e por aí vai.  
   O arquivo **secrets.h**, conterá os certificados necessários para realização de uma conexão segura com o AWS IoT Core, bem como as informações para conexão no WiFi.
   
-  Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e sem as mesmas seu programa não funcionará.    
+  Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e que sem as mesmas seu programa não funcionará.    
   
   Função **setup()**   
   É executada apenas uma vez na inicialização ou no reset do microcontrolador, e é nela que você deverá descrever as configurações e instruções gerais para preparar o programa antes que o loop principal seja executado. A função setup() é responsável pelas configurações iniciais da placa.   
@@ -88,7 +88,7 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
 
 Agora vamos aos passos de **criação do IoT na AWS**. Posteriormente voltaremos à IDE do Arduino para cmomplementar as informações do programa, conforme o avanço dos próximos passos.  
 
-## Agora a "coisa" começou a ficar séria :)  :)
+## Agora a "coisa" começou a ficar séria e mais legal :) 🔢
 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site da [AWS](https://aws.amazon.com/pt/console/)    
