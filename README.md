@@ -247,7 +247,7 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 Selecionar opção **Tables** e clicar no botão **Create Table**  
 Neste tópico "vamos fazer o básico" e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato NUMBER, pois armazenaremos a chave com o Ano+Mês+Dia+Hora+Min+Seg (AAAAMMDDHHMMSS).   
 
-Não entrarei em detalhes em relação à Sort Keys, Índices,TTL, etc. Mas dependendo da forma que for tratar as informações (*leitura, Exclusão, Atualização*) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **Performance, Custos $$$, Etc**. #Fica a Dica!!! 
+Não entrarei em detalhes em relação à Sort Keys, Índices, TTL, Etc. Mas dependendo da forma que for tratar as informações (*leitura, Exclusão, Atualização*) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **Performance, Custos $$$, Etc**. #Fica a Dica!!! 
 
 ![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
 
