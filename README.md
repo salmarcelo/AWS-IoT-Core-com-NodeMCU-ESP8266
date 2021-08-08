@@ -9,8 +9,8 @@ Vale lembrar que, se ainda não possui o NodeMCU ESP8266, você pode executar as
 
 ## Desenho de Solução  
 
-![image](https://user-images.githubusercontent.com/63315625/128622342-d45d6fbf-abec-4a19-a36c-6e3c06af5ea1.png)
-
+![image](https://user-images.githubusercontent.com/63315625/128634220-e383ac83-4436-4a48-8bee-09b1108eb174.png)
+  
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
