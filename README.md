@@ -226,13 +226,13 @@ Alterar as informações conforme abaixo:
   . private_key - informações contidas no certificado "xxxxxx-private.pem.key"    
  Basta abrir os arquivos na pasta onde os downloads dos certificados foram realizados, copiar o texto e colar, substituindo o texto **"COLE AQUI OS DADOS/INFORMAÇÕES...."    
 
-![image](https://user-images.githubusercontent.com/63315625/128585633-cd92a278-71a6-4669-8c2b-6a24b2918ff1.png)
+![image](https://user-images.githubusercontent.com/63315625/128621547-b4aa82ee-9675-4e6a-9da3-2c5f4e58169f.png)    
 
 #### Passo 03   
-Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCore-AWS-ESP8266.ino** e carregá-lo no microcontrolador, usando a IDE Arduino
+Agora salve e arquivo e compile o programa **IoTCore-AWS-ESP8266.ino**   
+Você já pode carregar o código no microcontrolador, usando a IDE Arduino, mas lembre-se que ainda faltam os passos para o armazenamento das informações.
 
 ![image](https://user-images.githubusercontent.com/63315625/128543144-c00458d7-c57a-4591-84cc-ba521f543640.png)
-
 
 ## Armazenamento das informações no Amazon DynamoDB 
 
