@@ -70,7 +70,7 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
 #### Passo 06  
-. Baixar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** disponibilizados na parte superior desta página.    
+. Baixar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** disponibilizados neste Git.    
 . No menu do Arduino IDE, selecionar **Arquivo / Novo**. Será gerado um arquivo "Sketch_XXXXX".    
 . Basta abrir o arquivo **IoTCore-AWS-ESP8266.ino** baixado no passo 01 no editor de sua preferência, copiar as linhas e colar no arquivo criado no Arduino IDE.  
 . No menu, selecione a opção **Sketch / Adicionar Arquivo** e selecione o arquivo **secret.h** baixado no passo 01     
