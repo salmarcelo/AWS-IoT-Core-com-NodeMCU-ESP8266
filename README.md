@@ -364,7 +364,7 @@ No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botã
 Preencher as informações conforme detalhes e imagem abaixo:   
   . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
   . No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for sensor, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "sensor" pelo nome do seu shadow.   
-  . Neste caso, estamos indicando que para cada  Publish recebido no tópico, ele irá acionar a função Lambda enviando as informações recebidas, ms você pode reestruturar a sua query da "forma que quiser", ou seja, consegue filtrar em qual condição você quer se seja acionada a função Lambda.   
+  . Neste caso, estamos indicando que para cada  Publish recebido no tópico, ele irá acionar a função Lambda enviando as informações recebidas, mas você pode reestruturar a sua query da "forma que quiser", ou seja, consegue filtrar em qual condição você quer se seja acionada a função Lambda.   
 
 Exemplo:   
 ```   
