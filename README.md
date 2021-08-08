@@ -131,8 +131,9 @@ Perceba que não estamos criando uma Policy neste momento. Faremos isso nos pró
 
 ![image](https://user-images.githubusercontent.com/63315625/128526078-63e3e216-acdb-4f91-90c6-01c27873c166.png)
 
-Será aberta uma janela para que realize o download dos certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO** momento de realizar esta etapa ** 
-Estes certificados é que irão garantir uma conexão segura entre o dispositivo e o IoT AWS
+Será aberta uma janela para que realize o download dos certificados gerados.    
+**ATENÇÃO**, pois este é o **ÚNICO** momento de realizar esta etapa    
+Estes certificados é que irão garantir uma conexão segura entre o dispositivo e o IoT AWS    
 
 ![image](https://user-images.githubusercontent.com/63315625/128621124-bf3330c9-b86f-4a08-a1ef-535ccc4941de.png)
 
