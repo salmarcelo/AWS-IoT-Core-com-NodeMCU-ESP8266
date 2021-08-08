@@ -133,16 +133,16 @@ Perceba que não estamos criando uma Policy neste momento. Faremos isso nos pró
 Será aberta uma janela para que realize o download dos certificados gerados. ** **ATENÇÃO**, pois este é o **ÚNICO** momento de realizar esta etapa ** 
 Estes certificados é que irão garantir uma conexão segura entre o dispositivo e o IoT AWS
 
-![image](https://user-images.githubusercontent.com/63315625/128447630-56f068d8-e2b6-44ec-86c1-4b375ea00daa.png)
+![image](https://user-images.githubusercontent.com/63315625/128621124-bf3330c9-b86f-4a08-a1ef-535ccc4941de.png)
 
 #### Passo 05
 Criar a **Shadow** do IoT Core, conforme imagens abaixo:   
 
 ![image](https://user-images.githubusercontent.com/63315625/128526910-1785484c-e256-45c2-afae-36498d3949ee.png)  
 
-![image](https://user-images.githubusercontent.com/63315625/128501861-041aaad2-b039-4fc3-942b-fb67dc770b30.png)  
+![image](https://user-images.githubusercontent.com/63315625/128621047-13985f29-5fa0-4ee3-ae82-0c5ac71c16fb.png)  
 
-![image](https://user-images.githubusercontent.com/63315625/128584839-4888bad0-2df9-4f05-844f-208593e34a23.png)
+![image](https://user-images.githubusercontent.com/63315625/128621077-e42773c8-f9ba-420b-8d5c-7acc8c15dd95.png)
 
 #### Passo 06
 Agora precisaremos copiar o Endpoint do Thing que será utilizado para comunicação entre o ESP8266 e a AWS   
@@ -173,9 +173,12 @@ Agora temos que atachar a Policy ao Certificado
   . Selecione a opção **Actions / Attach policy**   
   . Selecione a policy criada no passo anterior e clique em **Attach**       
 
+![image](https://user-images.githubusercontent.com/63315625/128621190-00ff0e37-bebb-4610-b971-3d2c446068b0.png)   
+
+![image](https://user-images.githubusercontent.com/63315625/128621208-c15b56cc-86b8-431b-b931-f53b00aa7ef7.png)
+
 #### Passo 09   
-A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06 no item Instalação do Arduino.   
-**Osbervação:** A segunda parte de configuração na AWS é opcional, caso realmente queira que todo Publish seja armazenado em Banco de Dados. Caso não queira, não precisará executar as etapas dos tópicos de armazenamento de dados, criação de função Lambda, Trigger da função com o IoT Core, que estarão mais adiante.   
+A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06, no item Instalação do Arduino.   
 
 ## Alterar Código Fonte
 
@@ -232,6 +235,8 @@ Com o Arduino conectado pelo cabo OSB, basta salvar, compilar o programa **IoTCo
 
 
 ## Armazenamento das informações no Amazon DynamoDB 
+
+**Osbervação:** Os próximos 3 tópicos obrigatórios caso queira que todo Publish seja armazenado em Banco de Dados. Caso contrário, não precisará executar as etapas dos tópicos de **Criação de Tabela DynamoDB**, **Criação da Função Lambda**, **Criar Trigger / Action - IoT Core com a Função Lambda**, que estarão mais adiante.   
 
 ### Criação da Tabela DynamoDB
 Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
@@ -303,7 +308,7 @@ No Identity and Access Management (IAM), Clicar em **Roles** e em seguida **Crea
  
  ![image](https://user-images.githubusercontent.com/63315625/128570306-3d76b98a-db6e-49a8-ba62-2792adf61ade.png)
 
-### Função Lambda
+### Criação da Função Lambda
 Na console da AWS, selecione o serviço **Lambda**, conforme imagem abaixo:
 
 ![image](https://user-images.githubusercontent.com/63315625/128545212-f20c35b0-da45-47da-9fb5-83da3de27138.png)  
@@ -338,7 +343,7 @@ Para realizar um teste, acesse a aba **Test**, preencha as informações do JSON
 
 Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluído.  
 
-### Triggar o IoT Core com a Função Lambda   
+### Criar Trigger / Action - IoT Core com a Função Lambda   
 Agora que temos nossa **Function Lambda criada**, é necessário realizar a configuração para que, ao receber um Publish, o IoT Core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
 
 #### Passo 01   
