@@ -22,13 +22,13 @@ Vale lembrar que se ainda não possui o NodeMCU ESP8266, você pode executar as 
 
 ## Bibliotecas Necessárias
 
-| Biblioteca  |  Link  | Complemento |
+| Biblioteca  |  Link  | Nome do Arquivo .zip |
 | ------------------- | ------------------- | ------------------- |
-|  Arduino MQTT | [MQTT](https://github.com/256dpi/arduino-mqtt)   |   |
-|  PubSubClient | [PublicSubscriber](https://github.com/knolleary/pubsubclient) |   |
-|  ArduinoJSON | [JSon Arduino](https://github.com/bblanchon/ArduinoJson) |  |
-|  DH Sensor | [Sensor Temperatura](https://drive.google.com/file/d/16brDLNmOVzmQs6sFh-_CAMivQu-cn6kg/view) | Baixar somente se for utilizar o sensor de temperatura/umidade |
-|  Adafruit Sensor | [Sensor Temperatura](https://drive.google.com/file/d/19ypgAVNwn5f-kb4KDxFr0eOvMQz_yxSU/view) | Baixar somente se for utilizar o sensor de temperatura/umidade |
+|  Arduino MQTT | [MQTT](https://github.com/256dpi/arduino-mqtt)   | *arduino-mqtt-master.zip*  |
+|  PubSubClient | [PublicSubscriber](https://github.com/knolleary/pubsubclient) | *pubsubclient-master.zip*  |
+|  ArduinoJSON | [JSon Arduino](https://github.com/bblanchon/ArduinoJson) | *ArduinoJson-6.x.zip* |
+|  DH Sensor | [Sensor Temperatura](https://drive.google.com/file/d/16brDLNmOVzmQs6sFh-_CAMivQu-cn6kg/view) | *DHT-sensor-library.zip* |
+|  Adafruit Sensor | [Sensor Temperatura](https://drive.google.com/file/d/19ypgAVNwn5f-kb4KDxFr0eOvMQz_yxSU/view) | *Adafruit_Sensor-master.zip* |
  
 ## Passo-a-passo
 
@@ -65,6 +65,7 @@ Para realizar a instalação das Bibliotecas, é necessário:
   . Baixar os Arquivos Zip das mesmas  
   . Realizar a instalação, através do menu **"Sketch / Incluir Biblioteca / Adicionar Biblioteca.zip"**, conforme imagem abaixo:  
 Para facilitar estou disponibilizando os arquivos no github, mas se necessário, poderá obter através dos links do item **Bibliotecas utilizadas**  
+     . Faça este processo para cada uma das Bibliotecas (.zip)   
   
   ![image](https://user-images.githubusercontent.com/63315625/128442244-ba58a54f-dd88-42e0-a665-51a4beef08ac.png)
 
@@ -163,7 +164,7 @@ Agora vamos criar a Policy e atachar a mesma no certificado. Esta Policy é que 
   . Resource ARN **"*"**    
   . Effect **Allow""    
   . Clicar em **Create**   
-Obs: Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é possível, e indicado pro melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
+**Obs:** Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é possível, e indicado pro melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
 
 ![image](https://user-images.githubusercontent.com/63315625/128606397-0e80655f-c96d-4dc7-8262-59d2ded13acc.png)
 
