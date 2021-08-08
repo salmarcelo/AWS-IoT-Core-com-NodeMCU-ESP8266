@@ -408,10 +408,12 @@ JSON
   "Umidade": "60.00"
 }
 ```
+
+![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
+
 **Obs 01:** Se você estiver com o Arduino conectado ao cabo USB ou Bateria (ou seja ligado), ele já estará executando os comandos que foram programados. Para isso, basta acessar a Console do Arduino, no menu **Ferramentas / Monitor Serial"** e acompanhar: 
 
 obs: existem diversos shadows que podem ser utilizados conforme a sua necessidade. Para conhecer maiores detalhes, vale a pena conferir a documentação na AWS
-![image](https://user-images.githubusercontent.com/63315625/128583268-f2e7f126-aed0-403c-a476-efd6a4972987.png)
 
 Espero que tenham gostado deste conteúdo 🌟
 
