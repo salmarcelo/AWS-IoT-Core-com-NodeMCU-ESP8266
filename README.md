@@ -76,7 +76,7 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
 . No menu, selecione a opção **Sketch / Adicionar Arquivo** e selecione o arquivo **secret.h** baixado no passo 01     
 . Utilizar a opção do menu **Arquivo / Salvar Como..."** e salvar o projeto com o nome de sua preferência ou o mesmo nome do arquivo disponibilizado **(IoTCore-AWS-ESP8266)**    
 **Observações:**  
-  O arquivo **IoTCore-AWS-ESP8266.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS(MQTT), Geração de JSON, Publish, Subscribe, e por aí vai.  
+  O arquivo **IoTCore-AWS-ESP8266.ino**, contem os códigos necessários para conectar com a sua rede WiFi, realizar a integração com o IoT Core AWS, Geração de JSON, Publish, Subscribe, e por aí vai.  
   O arquivo **secrets.h**, conterá os certificados necessários para realização de uma conexão segura com o AWS IoT Core, bem como as informações para conexão no WiFi.
   
   Se for a primeira vez que está desenvolvendo algo no Arduino, vale lembrar as duas principais funções e que sem as mesmas seu programa não funcionará.    
