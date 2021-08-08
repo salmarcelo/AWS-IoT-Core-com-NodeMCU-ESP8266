@@ -9,7 +9,7 @@ Vale lembrar que, se ainda não possui o NodeMCU ESP8266, você pode executar as
 
 ## Desenho de Solução  
 
-![image](https://user-images.githubusercontent.com/63315625/128646638-d245c581-5206-4a74-83f0-f678bfc65433.png)
+![image](https://user-images.githubusercontent.com/63315625/128646673-8f039215-17c2-4207-8955-a04dc0061467.png)
 
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
