@@ -350,7 +350,7 @@ Retornando Status code 200, vale conferir no **DynamoDB** se o item foi incluíd
 Agora que temos nossa **Function Lambda criada**, é necessário realizar a configuração para que, ao receber um Publish, o IoT Core acione a função Lambda que incluirá o item no DynamoDB, conforme proposta do Desenho de Solução.  
 
 #### Passo 01   
-Na Console da AWS, selecionar o serviço **IoT Core** e no menu lateral selecionar a opção **Things**. Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
+Na Console da AWS, selecionar o serviço **IoT Core**, e no menu lateral selecionar a opção **Things**. Selecione o Thing criado anteriormente clicando sobre o nome do mesmo. (ex: myespwork)   
 
 #### Passo 02   
 Acesse a aba **Shadow** e copie o conteúdo da coluna **MQTT topic prefix**, conforme imagem abaixo:   
@@ -364,7 +364,7 @@ No menu lateral selecionar a opção **Act / Rules**, em seguida clicar no botã
 Preencher as informações conforme detalhes e imagem abaixo:   
   . Preencher o nome da rule (Exemplo: IoTInvokeLambdaRule)   
   . No campo **Rule query statement**, preencher com o conteúdo com base na informação copiada do item shadow (MQTT topic prefix). Se o nome do seu Thing for myespwork e o nome do seu shadow for sensor, ficará exatamente igual ao exemplo abaixo. Caso contrário, basta substituir o texto "myespwork" pelo nome do seu Thing e o texto "sensor" pelo nome do seu shadow.   
-  . Neste caso, estamos indicando que para cada  Publish recebido no tópico, ele irá acionar a função Lambda enviando as informações recebidas, ms você pode reestrutura a sua query da "forma que quiser", ou seja, consegue filtrar em qual condição você quer se seja acionada a função Lambda.   
+  . Neste caso, estamos indicando que para cada  Publish recebido no tópico, ele irá acionar a função Lambda enviando as informações recebidas, ms você pode reestruturar a sua query da "forma que quiser", ou seja, consegue filtrar em qual condição você quer se seja acionada a função Lambda.   
 
 Exemplo:   
 ```   
