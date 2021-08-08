@@ -88,7 +88,7 @@ Para facilitar estou disponibilizando os arquivos no github, mas se necessário,
 
 Agora vamos aos passos de **criação do IoT na AWS**. Posteriormente voltaremos à IDE do Arduino para cmomplementar as informações do programa, conforme o avanço dos próximos passos.  
 
-## Agora a "coisa" começou a ficar séria e mais legal :) 🔢
+## Agora a "coisa" começou a ficar séria e mais legal :)
 
 ## Criação do IoT (Things) na AWS
 Caso não tenha uma conta na AWS, efetue o cadastramento no site da [AWS](https://aws.amazon.com/pt/console/)    
