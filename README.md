@@ -164,7 +164,7 @@ Agora vamos criar a Policy e atachar a mesma no certificado. Esta Policy é que 
   . Resource ARN **"*"**    
   . Effect **Allow""    
   . Clicar em **Create**   
-**Obs:** Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é possível, e indicado pro melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: permitir somente Subscriber para um determinado Thing/Tópico.   
+**Obs:** Perceba que neste caso estamos dando total permissão para uso dos serviços relacionados ao IoT Core. Mas é indicado por melhores práticas de segurança, limitar somente ao que realmente irá executar. (Ex: Permitir somente Subscriber para um determinado Thing/Tópico).   
 
 ![image](https://user-images.githubusercontent.com/63315625/128606397-0e80655f-c96d-4dc7-8262-59d2ded13acc.png)
 
@@ -179,7 +179,7 @@ Agora temos que atachar a Policy ao Certificado
 ![image](https://user-images.githubusercontent.com/63315625/128621208-c15b56cc-86b8-431b-b931-f53b00aa7ef7.png)
 
 #### Passo 09   
-A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a etapa do Passo 06, no item Instalação do Arduino.   
+A "primeira parte" de configuração da ASW foi concluída. Chegou a vez de atualizar os arquivos **IoTCore-AWS-ESP8266.ino** e **secret.h** diretamente na IDE do Arduino. Lembrando que você realizou a **etapa do Passo 06**, no **item Instalação do Arduino**.   
 
 ## Alterar Código Fonte
 
