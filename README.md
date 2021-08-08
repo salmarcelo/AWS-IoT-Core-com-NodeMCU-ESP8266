@@ -9,8 +9,8 @@ Vale lembrar que, se ainda não possui o NodeMCU ESP8266, você pode executar as
 
 ## Desenho de Solução  
 
-![image](https://user-images.githubusercontent.com/63315625/128634220-e383ac83-4436-4a48-8bee-09b1108eb174.png)
-  
+![image](https://user-images.githubusercontent.com/63315625/128634518-654915f7-4fdf-424d-8fae-0e800c25d5bc.png)   
+     
 ## Pré-Requisitos  
  - [x] Ter uma conta ativa na AWS  
  - [x] Ter um microcontrolador NodeMCU ESP8266 com WiFi integrado e Sensor de Temperatura/Umidade  
@@ -222,9 +222,9 @@ Alterar as informações conforme abaixo:
 . Informar na variável **THINGNAME** o nome da Thing criado no IoT Core   
 . Informar na variável **MQTT_HOST** o Endpoint criado para o Thing    
 . Informar as variáveis de Certificados   
-  . cacert - as informações contidas no certificado "AmazonRootCA1.pem"   
-  . client_cert - informações contidas no certificado "xxxxxxx-certificate.pem"   
-  . private_key - informações contidas no certificado "xxxxxx-private.pem.key"    
+    . cacert - as informações contidas no certificado "AmazonRootCA1.pem"   
+    . client_cert - informações contidas no certificado "xxxxxxx-certificate.pem"   
+    . private_key - informações contidas no certificado "xxxxxx-private.pem.key"    
  Basta abrir os arquivos na pasta onde os downloads dos certificados foram realizados, copiar o texto e colar, substituindo o texto **"COLE AQUI OS DADOS/INFORMAÇÕES...."    
 
 ![image](https://user-images.githubusercontent.com/63315625/128621547-b4aa82ee-9675-4e6a-9da3-2c5f4e58169f.png)    
@@ -246,7 +246,7 @@ Na console da AWS, selecione o serviço DynamoDB, conforme imagem abaixo:
 
 Selecionar opção **Tables** e clicar no botão **Create Table**  
 Neste tópico "vamos fazer o básico" e criaremos uma tabela com uma chave primária do tipo numérica que armazenará a data e hora do registro no formato NUMBER, pois armazenaremos a chave com o Ano+Mês+Dia+Hora+Min+Seg (AAAAMMDDHHMMSS).   
-Não entrarei em detalhes em relação à Sort Keys, Íncides, etc. Mas dependendo da forma que for tratar as informações (leitura) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **performance, custos de leitura, etc**. #Fica a Dica!!! 
+Não entrarei em detalhes em relação à Sort Keys, Índices,TTL, etc. Mas dependendo da forma que for tratar as informações (*leitura, Exclusão, Atualização*) é fundamental que pense nestes pontos antes de criação da tabela, pois com certeza influenciarão em questões de **Performance, Custos $$$, Etc**. #Fica a Dica!!! 
 
 ![image](https://user-images.githubusercontent.com/63315625/128544169-90d4a21c-b5e1-46b0-a708-e0225602c849.png)
 
